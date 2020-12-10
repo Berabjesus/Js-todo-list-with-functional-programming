@@ -7,7 +7,7 @@ const leftSection = () => {
   const header = it.is('h2')
   header.classes('h2 pb-4')
   header.innerText = 'Clock.me'
-
+  
   section.appendChild(header)
   return section
 }
