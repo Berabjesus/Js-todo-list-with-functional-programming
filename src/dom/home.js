@@ -1,4 +1,5 @@
 import it from '../modules/mainModule';
+import dropdown from '../functions/dropdown'
 import * as prototype from '../prototypes/objects';
 
 const leftSection = () => {
@@ -7,8 +8,9 @@ const leftSection = () => {
   const header = it.is('h2')
   header.classes('h2 pb-4')
   header.innerText = 'Clock.me'
-  
+
   section.appendChild(header)
+  section.appendChild(dropdown())
   return section
 }
 
