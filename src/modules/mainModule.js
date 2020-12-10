@@ -10,7 +10,6 @@ const mainModule = (() => {
     container.classes('row d-flex custom-border')
     return container
   };
-
   return {
     is, mainContainer
   }
