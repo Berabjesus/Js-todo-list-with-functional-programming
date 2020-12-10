@@ -8,7 +8,8 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-  },  module: {
+  },  
+  module: {
     rules: [
       {
         test: /\.scss$/,
@@ -59,7 +60,7 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         query: {
-            presets: ['es2015']
+            presets: ['@babel/preset-env']
         }
       },
     ],
@@ -79,4 +80,4 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     port: 3000,
   },
-}
+};
