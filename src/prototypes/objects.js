@@ -8,8 +8,8 @@
 //   return document.createElement(type)
 // }
 
-Object.prototype.classes = function(...classes) {
-  classes.map(newClass => this.classList.add(newClass))
+Object.prototype.classes = function(classes) {
+  classes.split(' ').map(newClass => this.classList.add(newClass))
 }
 
 

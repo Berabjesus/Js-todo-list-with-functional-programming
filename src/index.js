@@ -1,5 +1,8 @@
-import module from './modules/mainModule';
+import 'bootstrap';
+import './scss/main.scss';
+import get from './modules/mainModule';
 import * as prototype from './prototypes/objects';
+import home from './dom/home'
 // console.log('hello world');
 
 // Object.prototype.addClass = function(...classes) {
@@ -22,7 +25,10 @@ import * as prototype from './prototypes/objects';
 // console.log(div);
 
 const body = document.getElementsByTagName('body')[0]
-const main = module.mainContainer()
+const main = get.mainContainer()
+main.appendChild(home.leftSection())
+
+
 body.prepend(main)
 
 console.log(body);

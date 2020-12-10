@@ -1,0 +1,68 @@
+@import "~bootstrap/scss/bootstrap";
+@import "./reset.scss";
+
+/*
+*   CSS TABLE OF CONTENTS
+*
+*   1. Variables and Mixins
+*   2. Globals
+      2.1 Globals - debug
+      2.2 Globals - display
+      2.3 Globals - border
+*   5. Sections
+*     5.1 left section
+      5.2 section one
+      5.3 section one
+      5.4 section one
+*/
+
+
+/*** 1. Variables and Mixins ***/
+$leftSectionTheme : #01060a;
+
+@mixin getBorder($width, $type, $color, $direction: "") {
+  border#{$direction}: $width $type $color;
+}
+
+@mixin setPadding($size, $direction: "") {
+  padding#{$direction}: $size;
+}
+
+@mixin getHeader($size, $color) {
+  color: $color;
+  font-size: $size;
+}
+
+@mixin flexProperty($direction, $justify, $align :flex-start) {
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin  selfFlexProperty($self) {
+  align-self: $self;
+}
+
+/*** 2. Globals ***/
+/*** 2.1 Globals - debug ***/
+.custom-border {
+  @include getBorder(3px, dashed, red, '')
+}
+
+/*** 2.2 Globals - display ***/
+.h-100vh {
+  height: 100vh;
+}
+
+/*** 5. Sections ***/
+/*** 5.1 left section ***/
+
+.left-section {
+  background-color: $leftSectionTheme;
+  h2 {
+    @include getHeader(30px, white);
+    @include getBorder(3px, solid, white, '-bottom');
+    @include setPadding(20px, '-bottom')
+    text-align: center;
+  }
+}

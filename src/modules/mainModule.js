@@ -7,7 +7,7 @@ const mainModule = (() => {
   };
   const mainContainer = () => {
     const container = mainModule.is('main')
-    container.classes('d-flex', )
+    container.classes('row d-flex custom-border')
     return container
   };
 
