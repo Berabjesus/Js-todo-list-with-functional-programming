@@ -5,6 +5,7 @@ const leftSection = () => {
   const section = it.is('section')
   section.classes('col-3 d-flex flex-column left-section h-100vh custom-border')
   const header = it.is('h2')
+  header.classes('h2 pb-4')
   header.innerText = 'Clock.me'
 
   section.appendChild(header)

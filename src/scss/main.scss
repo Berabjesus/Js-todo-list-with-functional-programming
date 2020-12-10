@@ -62,7 +62,6 @@ $leftSectionTheme : #01060a;
   h2 {
     @include getHeader(30px, white);
     @include getBorder(3px, solid, white, '-bottom');
-    @include setPadding(20px, '-bottom')
     text-align: center;
   }
 }
