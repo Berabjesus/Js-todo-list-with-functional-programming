@@ -10,16 +10,16 @@ body.prepend(main)
 
 console.log(body);
 
-let data = JSON.parse(localStorage.getItem(localStorage.key(1)))
-let w = {
-  title: 'title kda;sdl',
-  data: data
-}
-// console.log(data);
-let keys = Object.keys(localStorage)
-console.log(keys);
-let filteredKeys = keys.filter(key => key.includes('clock.me'))
-console.log(filteredKeys);
+// let data = JSON.parse(localStorage.getItem(localStorage.key(1)))
+// let w = {
+//   title: 'title kda;sdl',
+//   data: data
+// }
+// // console.log(data);
+// let keys = Object.keys(localStorage)
+// console.log(keys);
+// let filteredKeys = keys.filter(key => key.includes('clock.me'))
+// console.log(filteredKeys);
 
 
 let ber = {
@@ -27,10 +27,11 @@ let ber = {
   age:13
 }
 // localStorage.setItem('ber', JSON.stringify(ber))
-let dd = JSON.parse(localStorage.getItem('ber'))
-dd.age = 2100
-console.log(dd);
-localStorage.setItem('ber', JSON.stringify(dd))
+// let dd = JSON.parse(localStorage.getItem('gym relatedclock.me'))
+// // dd.age = 2100
+// dd[0].title = 'works outs mis'
+// console.log(dd[0]);
+// localStorage.setItem('gym relatedclock.me', JSON.stringify(dd))
 
 
 

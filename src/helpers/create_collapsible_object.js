@@ -1,5 +1,6 @@
 import it from '../modules/main_module';
 import modal from './create_task_modal'
+import getLocalStorage from './access_local_storage'
 
 let data = JSON.parse(localStorage.getItem(localStorage.key(1)))
 let w = {
