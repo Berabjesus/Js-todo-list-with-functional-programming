@@ -1,5 +1,5 @@
-import it from '../modules/mainModule';
-import dropdown from '../functions/collapsibleObject'
+import it from '../modules/main_module';
+import dropdown from '../helpers/create_collapsible_object'
 
 const leftSection = () => {
   const section = it.is('section')
@@ -10,6 +10,8 @@ const leftSection = () => {
 
   section.appendChild(header)
   section.appendChild(dropdown())
+  section.appendChild(dropdown())
+
   return section
 }
 
