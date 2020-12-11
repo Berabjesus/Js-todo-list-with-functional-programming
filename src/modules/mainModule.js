@@ -1,8 +1,9 @@
-import * as prototype from '../prototypes/objects';
+import * as object from '../functions/defineObjectProperty';
 
 const mainModule = (() => {
   const is = type => {
     const element = document.createElement(type)
+    object.define(element)
     return element
   };
   const mainContainer = () => {

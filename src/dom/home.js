@@ -1,6 +1,5 @@
 import it from '../modules/mainModule';
-import dropdown from '../functions/dropdown'
-import * as prototype from '../prototypes/objects';
+import dropdown from '../functions/collapsibleObject'
 
 const leftSection = () => {
   const section = it.is('section')
