@@ -6,7 +6,6 @@ let w = {
   title: 'title kda;sdl',
   data: data
 }
-
 const collapsibleObject = () => {
     const container = it.is('div')
     container.classes('d-flex flex-column')
@@ -28,7 +27,6 @@ const collapsibleObject = () => {
 		collapseDiv.id = 'collapse'
 		const innerContainer = it.is('div')
 		innerContainer.classes('d-flex flex-column mx-auto text-dark')
-    // collapseDiv.innerText = 'jfhsldflskdjfklsjd klfj k'
     for (let i = 0; i < w.data.length; i++) {
       let button = it.isClickableTask(w.data[i], i)
       let div = it.is('div')
@@ -45,7 +43,7 @@ const collapsibleObject = () => {
 }
 
 const renderLocalStorageContent = () => {
-
+  // const 
 }
 
 const getAllCollapsibleObjects = () => {

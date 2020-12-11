@@ -1,5 +1,5 @@
 import it from '../modules/main_module';
-import dropdown from '../helpers/create_collapsible_object'
+import tasks from '../helpers/create_collapsible_object'
 
 const leftSection = () => {
   const section = it.is('section')
@@ -9,8 +9,8 @@ const leftSection = () => {
   header.innerText = 'Clock.me'
 
   section.appendChild(header)
-  section.appendChild(dropdown())
-  section.appendChild(dropdown())
+  section.appendChild(tasks())
+  section.appendChild(tasks())
 
   return section
 }
