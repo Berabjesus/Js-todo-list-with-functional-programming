@@ -1,5 +1,5 @@
 import it from '../modules/main_module';
-import {taskModal as modal} from './create_modals'
+import {taskModal as modal} from './modals'
 import {getLocalStorage as getTasks} from './access_local_storage'
 
 const getAllCategories = () => {
@@ -30,8 +30,7 @@ const renderCategories = () => {
       })
 
       collapseContainer.appendChild(taskContainer)
-      mainContainer.appendChild(categoryButton)
-      mainContainer.appendChild(collapseContainer)
+      mainContainer.append(categoryButton, collapseContainer)
     })
     console.log(mainContainer);
     return mainContainer

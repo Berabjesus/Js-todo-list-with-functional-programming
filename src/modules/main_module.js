@@ -1,5 +1,4 @@
 import * as object from '../helpers/define_object_property';
-
 const mainModule = (() => {
   const mainContainer = () => {
     const container = mainModule.is('main')
@@ -31,18 +30,21 @@ const mainModule = (() => {
     clickableTask.setAttribute("data-target", `#clockDotMeModal-${index}`)
     return clickableTask
   };
-  const isAddButton = (buttonDescription) => {
+  const isAddButton = (buttonDescription, modal) => {
     const container = mainModule.is('div')
     container.classes('d-flex flex-column mt-auto')
     const addButton = mainModule.is('button')
     addButton.classes('btn btn-info add-btn')
     addButton.innerText = '+'
+    addButton.setAttribute("data-toggle", 'modal')
+    addButton.setAttribute('data-target', `#addCategory`)
+
     const text = mainModule.is('h4')
     text.classes('text-center my-1 font-weight-lighter')
     text.innerText = buttonDescription
 
-    container.appendChild(addButton)
-    container.appendChild(text)
+    container.append(addButton, text)
+    container.innerHTML += modal
     return container
   }
   return {

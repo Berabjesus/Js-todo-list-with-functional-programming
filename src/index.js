@@ -10,6 +10,18 @@ body.prepend(main)
 
 console.log(body);
 
+// function test() {
+//   console.log('1212asdasd');
+// }
+
+// let b = document.createElement('button')
+// b.innerText = 'test button'
+// b.onclick = test
+// body.appendChild(b)
+
+
+
+
 // let data = JSON.parse(localStorage.getItem(localStorage.key(1)))
 // let w = {
 //   title: 'title kda;sdl',

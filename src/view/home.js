@@ -1,5 +1,6 @@
 import it from '../modules/main_module';
-import tasks from '../helpers/create_collapsible_object'
+import tasks from '../helpers/collapsible_object'
+import {addCategoryModal as categoryModal} from '../helpers/modals'
 
 const leftSection = () => {
   const section = it.is('section')
@@ -12,12 +13,9 @@ const leftSection = () => {
   header3.classes('h3 pb-2 mt-4 font-weight-lighter')
   header3.innerText = 'Categories'
 
-  const addCategoryButton = it.isAddButton('Add category')
+  const addCategoryButton = it.isAddButton('Add category', categoryModal())
 
-  section.appendChild(header2)
-  section.appendChild(header3)
-  section.appendChild(tasks())
-  section.appendChild(addCategoryButton)
+  section.append(header2, header3, tasks(), addCategoryButton)
 
   return section
 }
