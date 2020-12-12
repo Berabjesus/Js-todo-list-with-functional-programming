@@ -31,14 +31,14 @@ const mainModule = (() => {
     clickableTask.setAttribute("data-target", `#clockDotMeModal-${index}`)
     return clickableTask
   };
-  const isAddButton = (buttonDescription, modal) => {
+  const isAddButton = (buttonDescription, modal, id) => {
     const container = mainModule.is('div')
     container.classes('d-flex flex-column mt-auto')
     const addButton = mainModule.is('button')
     addButton.classes('btn btn-info add-btn')
     addButton.innerText = '+'
     addButton.setAttribute("data-toggle", 'modal')
-    addButton.setAttribute('data-target', `#addCategory`)
+    addButton.setAttribute('data-target', `#${id}`)
 
     const text = mainModule.is('h5')
     text.classes('text-center my-1 font-weight-lighter')
