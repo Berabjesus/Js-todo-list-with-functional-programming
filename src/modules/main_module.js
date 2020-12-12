@@ -46,7 +46,7 @@ const mainModule = (() => {
     container.append(addButton, text)
     container.innerHTML += modal
     return container
-  }
+  };
   return {
     mainContainer, is, isCollapsibleCategory, isClickableTask, isAddButton
   }

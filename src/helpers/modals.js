@@ -34,9 +34,10 @@ const addCategoryModal = () => {
             <form>
               <div class="form-group">
                 <label for="newCategory">Category</label>
-                <input type="text" class="form-control" id="newCategory" aria-describedby="newCategory" placeholder="Enter new category">
+                <input type="text" class="form-control" id="newCategoryKey" aria-describedby="newCategoryKey" placeholder="Enter new category">
               </div>
               <button type="button" id= "addCategoryButton" class="btn btn-primary">Add</button>
+              <p class="text-dark text-center" id="newCategoryKeyNotif"></p>
             </form>
           </div>
           <div class="modal-footer">

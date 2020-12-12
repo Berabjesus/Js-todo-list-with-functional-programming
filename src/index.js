@@ -2,12 +2,14 @@ import 'bootstrap';
 import './scss/main.scss';
 import get from './modules/main_module';
 import home from './view/home'
+import * as events from './helpers/event_listeners'
 
 const body = document.getElementsByTagName('body')[0]
 const main = get.mainContainer()
 main.appendChild(home.leftSection())
 body.prepend(main)
 
+events.addEventToAddCategoryButton()
 console.log(body);
 
 // function test() {
