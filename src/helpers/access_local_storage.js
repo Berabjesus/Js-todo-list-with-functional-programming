@@ -1,9 +1,9 @@
 const getLocalStorage = () => {
   const appSpecificKeys = getKeysFromLocalStorage()
-  const arrayOfFilteredTasks = appSpecificKeys.map(key => {
+  const arrayOfFilteredTasks = appSpecificKeys.map(key => {    
     const obj = {
       name: key,
-      data: JSON.parse(localStorage.getItem(key+'clock.me'))
+      data:  JSON.parse(localStorage.getItem(key+'clock.me'))
     }
     return obj
   })

@@ -3,12 +3,12 @@ import {taskModal as modal} from './modals'
 import {getLocalStorage as getTasks} from './access_local_storage'
 
 const getAllCategories = () => {
-    const container = it.is('div')
-    container.id = "categoryContainer"
-    container.classes('d-flex flex-column mb-3')
+    const mainContainer = it.is('div')
+    mainContainer.id = "categoryContainer"
+    mainContainer.classes('d-flex flex-column mb-3')
 
-    container.appendChild(renderCategories())
-    return container
+    mainContainer.appendChild(renderCategories())
+    return mainContainer
 }
 
 const renderCategories = () => {

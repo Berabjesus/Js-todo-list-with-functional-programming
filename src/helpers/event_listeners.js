@@ -13,6 +13,7 @@ const addEventToAddCategoryButton = ()=> {
     value.length === 0 || !value.trim() ? (() => {
       notif.innerText = 'Empty Key is not allowed'
     })() : (()=> {
+      localStorage.setItem(value+'clock.me','[]')
       reload()
       notif.innerText = value + ' is added to the categories'
     })()
@@ -22,14 +23,11 @@ const addEventToAddCategoryButton = ()=> {
 }
 const reload = () => {
   let categoryContainer = document.getElementById('categoryContainer')
-  let child = categoryContainer.lastElementChild;
   while ( categoryContainer.lastElementChild) {
-    categoryContainer.removeChild(child);
-    child = categoryContainer.lastElementChild;
+    categoryContainer.removeChild(categoryContainer.lastElementChild);
+    categoryContainer.lastElementChild;
   }
-  let btn = document.createElement('button')
-  btn.innerText = 'asdasd'
-  categoryContainer.appendChild(btn)
+  categoryContainer.appendChild(tasks())
 }
 
 export {addEventToAddCategoryButton}
