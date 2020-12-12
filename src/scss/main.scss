@@ -28,11 +28,6 @@ $leftSectionTheme : #01060a;
   padding#{$direction}: $size;
 }
 
-@mixin getHeader($size, $color) {
-  color: $color;
-  font-size: $size;
-}
-
 @mixin flexProperty($direction, $justify, $align :flex-start) {
   flex-direction: $direction;
   justify-content: $justify;
@@ -41,6 +36,24 @@ $leftSectionTheme : #01060a;
 
 @mixin  selfFlexProperty($self) {
   align-self: $self;
+}
+
+@mixin  customScrollBar() {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f8f8f8;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #333;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }  
 }
 
 /*** 2. Globals ***/
@@ -55,13 +68,18 @@ $leftSectionTheme : #01060a;
 }
 
 /*** 5. Sections ***/
+body {
+  @include customScrollBar()
+}
+
 /*** 5.1 left section ***/
 
 .left-section {
   background-color: $leftSectionTheme;
-  h2 {
-    @include getHeader(30px, white);
+  overflow-y: auto;
+  @include customScrollBar();
+  h2, h3 {
     @include getBorder(3px, solid, white, '-bottom');
     text-align: center;
-  }
+  };
 }

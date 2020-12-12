@@ -16,7 +16,6 @@ const setLocalStorage = () => {
 
 const getKeysFromLocalStorage = () => ((Object.keys(localStorage)).filter(key => key.includes('clock.me'))).map(key => key.replace('clock.me', ''))
 
+const setKeyToLocalStorage = newKey => localStorage.setItem(newKey, []);
 
-// .map(key => key.replace('clock.me', ''))
-
-export {getLocalStorage, setLocalStorage}
+export {getLocalStorage, setLocalStorage, getKeysFromLocalStorage,setKeyToLocalStorage}
