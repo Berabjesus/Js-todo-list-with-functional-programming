@@ -17,8 +17,6 @@ const addEventToAddCategoryButton = ()=> {
       reload()
       notif.innerText = value + ' is added to the categories'
     })()
-    
-    console.log(value);
   }
 }
 const reload = () => {
