@@ -3,7 +3,7 @@ const mainModule = (() => {
   const mainContainer = () => {
     const container = mainModule.is('main')
     container.id = 'mainContainer'
-    container.classes('row d-flex custom-border')
+    container.classes('row d-flex')
     return container
   };
   const is = type => {

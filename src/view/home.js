@@ -4,7 +4,7 @@ import {addCategoryModal as categoryModal} from '../helpers/modals'
 
 const leftSection = () => {
   const section = it.is('section')
-  section.classes('col-3 d-flex flex-column left-section text-white h-100vh custom-border')
+  section.classes('col-3 d-flex flex-column left-section text-white h-100vh')
   section.id = "left-section"
   const header2 = it.is('h2')
   header2.classes('display-2 pb-4')
