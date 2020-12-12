@@ -1,8 +1,5 @@
 import {setLocalStorageKey as setKey} from './access_local_storage'
 import * as reload from '../view/reload'
-const setLocalStorageKey = key => {
-  setKey(key)
-}
 
 const addEventToAddCategoryButton = ()=> {
   const addCategoryButton = document.getElementById('addCategoryButton')
@@ -12,7 +9,7 @@ const addEventToAddCategoryButton = ()=> {
     value.length === 0 || !value.trim() ? (() => {
       notif.innerText = 'Empty Key is not allowed'
     })() : (()=> {
-      localStorage.setItem(value+'clock.me','[]')
+      setKey(value+'clock.me')
       reload.reloadCategories()
       notif.innerText = value + ' is added to the categories'
     })()
