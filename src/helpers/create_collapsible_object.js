@@ -1,14 +1,8 @@
 import it from '../modules/main_module';
 import modal from './create_task_modal'
 import {getLocalStorage as getTasks} from './access_local_storage'
-import mainModule from '../modules/main_module';
 
-let data = JSON.parse(localStorage.getItem(localStorage.key(1)))
-let w = {
-  title: 'title kda;sdl',
-  data: data
-}
-const collapsibleObject = () => {
+const getAllCategories = () => {
     const container = it.is('div')
     container.classes('d-flex flex-column')
 
@@ -43,5 +37,4 @@ const renderCategories = () => {
     return mainContainer
 }
 
-// renderCategories()
-export default collapsibleObject
+export default getAllCategories

@@ -1,9 +1,9 @@
 const getLocalStorage = () => {
-  const filteredKeys = (Object.keys(localStorage).filter(key => key.includes('clock.me')))
-  const arrayOfFilteredTasks = filteredKeys.map(key => {
+  const appSpecificKeys = getKeysFromLocalStorage()
+  const arrayOfFilteredTasks = appSpecificKeys.map(key => {
     const obj = {
-      name: key.replace('clock.me', ''),
-      data: JSON.parse(localStorage.getItem(key))
+      name: key,
+      data: JSON.parse(localStorage.getItem(key+'clock.me'))
     }
     return obj
   })
@@ -13,5 +13,10 @@ const getLocalStorage = () => {
 const setLocalStorage = () => {
 
 }
+
+const getKeysFromLocalStorage = () => ((Object.keys(localStorage)).filter(key => key.includes('clock.me'))).map(key => key.replace('clock.me', ''))
+
+
+// .map(key => key.replace('clock.me', ''))
 
 export {getLocalStorage, setLocalStorage}
