@@ -4,8 +4,7 @@ import {addCategoryModal as categoryModal} from '../helpers/modals'
 
 const leftSection = () => {
   const section = it.is('section')
-  section.classes('col-3 d-flex flex-column left-section text-white h-100vh')
-  section.id = "left-section"
+  section.classes('col-12 col-md-3 d-flex flex-column text-white h-100vh left-section')
   const header2 = it.is('h2')
   header2.classes('display-2 pb-4')
   header2.innerText = 'Clock.me'
@@ -15,8 +14,8 @@ const leftSection = () => {
   header3.innerText = 'Categories'
 
   const addCategoryButton = it.isAddButton('Add category', categoryModal())
-
-  section.append(header2, header3, tasks(), addCategoryButton)
+  addCategoryButton.classes('mb-2')
+  section.append(header2, header3,addCategoryButton, tasks())
 
   return section
 }

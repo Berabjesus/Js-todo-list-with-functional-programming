@@ -111,8 +111,10 @@ body {
 .left-section {
   @include customScrollBar();
   @include setPadding(50px, -bottom);
+  position: relative;
   background-color: $leftSectionTheme;
   overflow-y: auto;
+  overflow-x: unset;
   h2, h3 {
     @include setBorder(3px, solid, white, '-bottom');
     text-align: center;
