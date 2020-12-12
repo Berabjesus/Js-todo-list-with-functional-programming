@@ -40,7 +40,7 @@ const mainModule = (() => {
     addButton.setAttribute("data-toggle", 'modal')
     addButton.setAttribute('data-target', `#addCategory`)
 
-    const text = mainModule.is('h4')
+    const text = mainModule.is('h5')
     text.classes('text-center my-1 font-weight-lighter')
     text.innerText = buttonDescription
 

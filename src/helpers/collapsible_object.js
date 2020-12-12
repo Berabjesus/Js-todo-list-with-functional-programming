@@ -1,6 +1,6 @@
 import it from '../modules/main_module';
 import {taskModal as modal} from './modals'
-import {getLocalStorage as getTasks} from './access_local_storage'
+import {getTasksFromLocalStorage as getTasks} from './access_local_storage'
 
 const getAllCategories = () => {
     const mainContainer = it.is('div')

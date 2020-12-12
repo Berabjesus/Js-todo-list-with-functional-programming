@@ -1,6 +1,5 @@
 import {setLocalStorageKey as setKey} from './access_local_storage'
-import {renderCategories as tasks} from '../helpers/collapsible_object'
-
+import * as reload from '../view/reload'
 const setLocalStorageKey = key => {
   setKey(key)
 }
@@ -14,18 +13,10 @@ const addEventToAddCategoryButton = ()=> {
       notif.innerText = 'Empty Key is not allowed'
     })() : (()=> {
       localStorage.setItem(value+'clock.me','[]')
-      reload()
+      reload.reloadCategories()
       notif.innerText = value + ' is added to the categories'
     })()
   }
-}
-const reload = () => {
-  let categoryContainer = document.getElementById('categoryContainer')
-  while ( categoryContainer.lastElementChild) {
-    categoryContainer.removeChild(categoryContainer.lastElementChild);
-    categoryContainer.lastElementChild;
-  }
-  categoryContainer.appendChild(tasks())
 }
 
 export {addEventToAddCategoryButton}

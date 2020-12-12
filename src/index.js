@@ -6,7 +6,7 @@ import * as events from './helpers/event_listeners'
 
 const body = document.getElementsByTagName('body')[0]
 const main = it.mainContainer()
-main.appendChild(home.leftSection())
+main.append(home.leftSection(), home.middleSection())
 body.prepend(main)
 
 events.addEventToAddCategoryButton()

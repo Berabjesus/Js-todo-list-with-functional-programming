@@ -107,7 +107,6 @@ body {
 }
 
 /*** 5.1 left section ***/
-
 .left-section {
   @include customScrollBar();
   @include setPadding(50px, -bottom);
@@ -128,4 +127,17 @@ body {
   @include setBorder(1px, solid, white);
   @include setPadding(10px);
   border-top: unset;
+}
+
+/*** 5.1 left section ***/
+.middle-section {
+  @include setBorder(2px, solid, black);
+  border-left: unset;
+  position: relative;
+}
+.new-task-btn {
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  font-weight: 900 !important;
 }

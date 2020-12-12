@@ -1,4 +1,4 @@
-const getLocalStorage = () => {
+const getTasksFromLocalStorage = () => {
   const appSpecificKeys = getKeysFromLocalStorage()
   const arrayOfFilteredTasks = appSpecificKeys.map(key => {    
     const obj = {
@@ -18,4 +18,4 @@ const getKeysFromLocalStorage = () => ((Object.keys(localStorage)).filter(key =>
 
 const setLocalStorageKey = newKey => localStorage.setItem(newKey, []);
 
-export {getLocalStorage, setLocalStorage, getKeysFromLocalStorage,setLocalStorageKey}
+export {getTasksFromLocalStorage, setLocalStorage, getKeysFromLocalStorage,setLocalStorageKey}

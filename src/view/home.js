@@ -10,7 +10,7 @@ const leftSection = () => {
   header2.innerText = 'Clock.me'
 
   const header3 = it.is('h3')
-  header3.classes('h3 pb-2 mt-4 font-weight-lighter')
+  header3.classes('h2 pb-2 mt-4 font-weight-lighter')
   header3.innerText = 'Categories'
 
   const addCategoryButton = it.isAddButton('Add category', categoryModal())
@@ -21,7 +21,18 @@ const leftSection = () => {
 }
 
 const middleSection = () => {
-  console.log('middle');
+  const section = it.is('section')
+  section.classes('col-12 col-md-7 d-flex text-dark p-0 h-100vh middle-section')
+
+  const upcomingTasks = it.is('div')
+  upcomingTasks.classes('col-6')
+  const pastTasks = it.is('div')
+  pastTasks.classes('col-6')
+
+  const addNewTaskButton = it.isAddButton('Add New Task', categoryModal())
+  addNewTaskButton.classes('mb-3 new-task-btn')
+  section.append(upcomingTasks, pastTasks, addNewTaskButton)
+  return section
 }
 
 const rightSection = () => {
