@@ -39,12 +39,12 @@ const addCategoryModal = id => {
                 <label for="newCategory">Category</label>
                 <input type="text" class="form-control" id="newCategoryKey" aria-describedby="newCategoryKey" placeholder="Enter new category">
               </div>
-              <button type="button" id= "${id}Button" class="btn btn-primary">Add</button>
+              <button type="button" id= "${id}Button" class="btn btn-dark text-white">Add</button>
               <p class="text-dark text-center" id="newCategoryKeyNotif"></p>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-dark text-white" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -52,15 +52,14 @@ const addCategoryModal = id => {
 }
 
 const addTaskModal = id => {
-  const categories = getKeys()
   const select = it.is('select')
   select.id = 'categoryOptions'
-  categories.map(option => {
+  select.classes('form-control')
+  getKeys().map(option => {
     const newOption = it.is('option') 
     newOption.innerText = option
     select.appendChild(newOption)
   })
-  
   return `<div class="modal fade text-dark" id="${id}" tabindex="-1" role="dialog" aria-labelledby="${id}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -85,8 +84,8 @@ const addTaskModal = id => {
             <input type="date" class="form-control" id="${id}Date" aria-describedby="${id}Date">
           </div>
           <div class="form-group">
-            <label for="${id}Priority">Task Date</label>
-            <select name="priority" id="priority">
+            <label for="${id}Priority">Task Priority</label>
+            <select name="priority" class= "form-control" id="priority">
               <option value="1">1</option>
               <option value="1">2</option>
               <option value="1">3</option>
@@ -95,15 +94,15 @@ const addTaskModal = id => {
             </select>
           </div>
           <div class="form-group">
-            <label for="${select.id}">Task Date</label>
-            ${select}
+            <label for="${select.id}">Task Category</label>` +
+            select.outerHTML + `
           </div>
-          <button type="button" id= "${id}Button" class="btn btn-primary">Add</button>
+          <button type="button" id= "${id}Button" class="btn btn-dark text-white">Add</button>
           <p class="text-dark text-center" id="${id}Notif"></p>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark text-white" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

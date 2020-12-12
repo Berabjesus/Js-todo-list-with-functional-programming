@@ -28,8 +28,8 @@ const middleSection = () => {
   upcomingTasks.classes('col-6')
   const pastTasks = it.is('div')
   pastTasks.classes('col-6')
-
-  const addNewTaskButton = it.isAddButton('Add New Task', taskModal('newTask'))
+  
+  const addNewTaskButton = it.isAddButton('Add New Task', taskModal('newTask'),'newTask')
   addNewTaskButton.classes('mb-3 new-task-btn')
   section.append(upcomingTasks, pastTasks, addNewTaskButton)
   return section
