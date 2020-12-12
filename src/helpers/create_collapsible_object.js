@@ -1,10 +1,10 @@
 import it from '../modules/main_module';
-import modal from './create_task_modal'
+import {taskModal as modal} from './create_modals'
 import {getLocalStorage as getTasks} from './access_local_storage'
 
 const getAllCategories = () => {
     const container = it.is('div')
-    container.classes('d-flex flex-column')
+    container.classes('d-flex flex-column mb-3')
 
     container.appendChild(renderCategories())
     return container
@@ -20,7 +20,7 @@ const renderCategories = () => {
       collapseContainer.id = `collapse-${index}`
 
       const taskContainer = it.is('div')
-      taskContainer.classes('d-flex flex-column mx-auto text-dark')
+      taskContainer.classes('d-flex flex-column mx-auto text-dark task-container')
 
       category.data.map((subTask, taskIndex) => {
         const uniqueId = index+'-'+taskIndex

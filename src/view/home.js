@@ -12,9 +12,12 @@ const leftSection = () => {
   header3.classes('h3 pb-2 mt-4 font-weight-lighter')
   header3.innerText = 'Categories'
 
+  const addCategoryButton = it.isAddButton('Add category')
+
   section.appendChild(header2)
   section.appendChild(header3)
   section.appendChild(tasks())
+  section.appendChild(addCategoryButton)
 
   return section
 }

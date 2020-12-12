@@ -13,7 +13,7 @@ const mainModule = (() => {
   };
   const isCollapsibleCategory = (categoryName, index) => {
     const collapsibleCategory = mainModule.is('button')
-    collapsibleCategory.classes('btn btn-info dropdown-toggle text-center mb-3')
+    collapsibleCategory.classes('btn dropdown-toggle text-center mb-3 task-btn')
     const span = mainModule.is('span')
     span.classes('caret')
     collapsibleCategory.setAttribute("data-toggle", 'collapse')
@@ -25,14 +25,28 @@ const mainModule = (() => {
   };
   const isClickableTask = (taskTitle, index) => {
     const clickableTask = mainModule.is('a')
-    clickableTask.classes('btn btn-dark mb-1 w-100')
+    clickableTask.classes('btn btn-dark mb-1 w-100 task-btn subtasks-btn')
     clickableTask.innerText = taskTitle
     clickableTask.setAttribute("data-toggle","modal")
     clickableTask.setAttribute("data-target", `#clockDotMeModal-${index}`)
     return clickableTask
   };
+  const isAddButton = (buttonDescription) => {
+    const container = mainModule.is('div')
+    container.classes('d-flex flex-column mt-auto')
+    const addButton = mainModule.is('button')
+    addButton.classes('btn btn-info add-btn')
+    addButton.innerText = '+'
+    const text = mainModule.is('h4')
+    text.classes('text-center my-1 font-weight-lighter')
+    text.innerText = buttonDescription
+
+    container.appendChild(addButton)
+    container.appendChild(text)
+    return container
+  }
   return {
-    is,isCollapsibleCategory, isClickableTask, mainContainer
+    mainContainer, is, isCollapsibleCategory, isClickableTask, isAddButton
   }
 })()
 

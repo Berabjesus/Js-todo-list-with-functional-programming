@@ -20,12 +20,16 @@
 /*** 1. Variables and Mixins ***/
 $leftSectionTheme : #01060a;
 
-@mixin getBorder($width, $type, $color, $direction: "") {
+@mixin setBorder($width, $type, $color, $direction: "") {
   border#{$direction}: $width $type $color;
 }
 
 @mixin setPadding($size, $direction: "") {
   padding#{$direction}: $size;
+}
+
+@mixin setMargin($size, $direction: "") {
+  margin#{$direction}: $size;
 }
 
 @mixin flexProperty($direction, $justify, $align :flex-start) {
@@ -56,15 +60,45 @@ $leftSectionTheme : #01060a;
   }  
 }
 
+@mixin customButtonProperties() {
+  @include setBorder(3px, solid, white);
+  background-color: $leftSectionTheme;
+  &:hover {
+    color: black;
+    background-color: white;
+  };
+}
+
 /*** 2. Globals ***/
 /*** 2.1 Globals - debug ***/
 .custom-border {
-  @include getBorder(3px, dashed, red, '')
+  @include setBorder(3px, dashed, red, '')
 }
 
 /*** 2.2 Globals - display ***/
 .h-100vh {
   height: 100vh;
+}
+
+.add-btn {
+  @include customButtonProperties();
+  @include setPadding(0);
+  @include selfFlexProperty(center);
+  background-color: $leftSectionTheme;
+  border-radius: 50%;
+  width: 65px;
+  font-size: 40px;
+}
+
+.task-btn {
+  @include customButtonProperties();
+  color: white;
+  font-size: 25px;
+}
+
+.subtasks-btn {
+  font-size: 20px;
+  border-width: 1px;
 }
 
 /*** 5. Sections ***/
@@ -75,11 +109,21 @@ body {
 /*** 5.1 left section ***/
 
 .left-section {
+  @include customScrollBar();
+  @include setPadding(50px, -bottom);
   background-color: $leftSectionTheme;
   overflow-y: auto;
-  @include customScrollBar();
   h2, h3 {
-    @include getBorder(3px, solid, white, '-bottom');
+    @include setBorder(3px, solid, white, '-bottom');
     text-align: center;
   };
+  h3 {
+    border: unset;
+  }
+}
+
+.task-container {
+  @include setBorder(1px, solid, white);
+  @include setPadding(10px);
+  border-top: unset;
 }
