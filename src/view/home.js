@@ -10,7 +10,6 @@ const leftSection = () => {
 
   section.appendChild(header)
   section.appendChild(tasks())
-  section.appendChild(tasks())
 
   return section
 }

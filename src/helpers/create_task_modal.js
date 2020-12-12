@@ -1,7 +1,7 @@
 import it from '../modules/main_module';
 
 const modal = (obj, index) => {
-  const modal = `<div class="modal fade" id="exampleModalCenter${index}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  const modal = `<div class="modal fade" id="clockDotMeModal-${index}" tabindex="-1" role="dialog" aria-labelledby="clockDotMeModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
