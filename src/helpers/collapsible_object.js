@@ -4,6 +4,7 @@ import {getLocalStorage as getTasks} from './access_local_storage'
 
 const getAllCategories = () => {
     const container = it.is('div')
+    container.id = "categoryContainer"
     container.classes('d-flex flex-column mb-3')
 
     container.appendChild(renderCategories())
@@ -36,4 +37,4 @@ const renderCategories = () => {
     return mainContainer
 }
 
-export default getAllCategories
+export {getAllCategories, renderCategories}

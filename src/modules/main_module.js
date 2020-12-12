@@ -2,6 +2,7 @@ import * as object from '../helpers/define_object_property';
 const mainModule = (() => {
   const mainContainer = () => {
     const container = mainModule.is('main')
+    container.id = 'mainContainer'
     container.classes('row d-flex custom-border')
     return container
   };

@@ -1,4 +1,5 @@
 import {setLocalStorageKey as setKey} from './access_local_storage'
+import {renderCategories as tasks} from '../helpers/collapsible_object'
 
 const setLocalStorageKey = key => {
   setKey(key)
@@ -12,24 +13,23 @@ const addEventToAddCategoryButton = ()=> {
     value.length === 0 || !value.trim() ? (() => {
       notif.innerText = 'Empty Key is not allowed'
     })() : (()=> {
-      loadDoc()
+      reload()
       notif.innerText = value + ' is added to the categories'
     })()
     
     console.log(value);
   }
 }
-
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("newCategoryKeyNotif").innerHTML =
-      this.responseText;
-    }
-  };
-  xhttp.open("GET", "t.txt", true);
-  xhttp.send();
+const reload = () => {
+  let categoryContainer = document.getElementById('categoryContainer')
+  let child = categoryContainer.lastElementChild;
+  while ( categoryContainer.lastElementChild) {
+    categoryContainer.removeChild(child);
+    child = categoryContainer.lastElementChild;
+  }
+  let btn = document.createElement('button')
+  btn.innerText = 'asdasd'
+  categoryContainer.appendChild(btn)
 }
 
 export {addEventToAddCategoryButton}
