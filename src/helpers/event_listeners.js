@@ -20,12 +20,17 @@ const addEventToNewTaskModal = () => {
   const addEventToNewTaskButton = idSelector('newTaskButton')
 
   addEventToNewTaskButton.onclick = function() {
-    // const [title, description, dueDate, priority, category] 
-
-    const valueArray = [getValue('newTaskTitle'), getValue('newTaskDesc'), getValue('newTaskDate'), getValue('newTaskpriority'), getValue('taskCategories')];
+    const newtaskObject = {
+      category: getValue('taskCategories'),
+      title: getValue('newTaskTitle'),
+      description: getValue('newTaskDesc'),
+      dueDate: getValue('newTaskDate'),
+      priority: getValue('newTaskpriority')
+    }
     const notif = idSelector('newTaskNotif')
-    valueArray.some(value => isEmpty(value)) ? (() => notif.innerText = 'Fill all the fields')() : (() => {
-      notif.innerText = valueArray[0] + ' is added' 
+    Object.values(newtaskObject).some(value => isEmpty(value)) ? (() => notif.innerText = 'Fill all the fields')() : (() => {
+      store(newtaskObject)
+      notif.innerText = newtaskObject.title + ' is added' 
     })()
   }
 }

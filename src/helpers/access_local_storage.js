@@ -10,8 +10,8 @@ const getTasksFromLocalStorage = () => {
   return arrayOfFilteredTasks
 }
 
-const setLocalStorage = () => {
-
+const setLocalStorage = (arr) => {
+  
 }
 
 const getKeysFromLocalStorage = () => ((Object.keys(localStorage)).filter(key => key.includes('clock.me'))).map(key => key.replace('clock.me', ''))
