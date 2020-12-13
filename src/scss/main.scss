@@ -38,11 +38,11 @@ $firstSectionTheme : #01060a;
   align-items: $align;
 }
 
-@mixin  selfFlexProperty($self) {
+@mixin selfFlexProperty($self) {
   align-self: $self;
 }
 
-@mixin  customScrollBar() {
+@mixin customScrollBar() {
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -57,16 +57,19 @@ $firstSectionTheme : #01060a;
 
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
-  }  
+  }
 }
 
 @mixin customButtonProperties() {
   @include setBorder(3px, solid, white);
   background-color: $firstSectionTheme;
+
   &:hover {
     color: black;
     background-color: white;
-  };
+  }
+
+  ;
 }
 
 /*** 2. Globals ***/
@@ -108,7 +111,7 @@ $firstSectionTheme : #01060a;
 
 /*** 5. Sections ***/
 body {
-  @include customScrollBar()
+  @include customScrollBar();
 }
 
 /*** 5.1 first section ***/
@@ -119,10 +122,15 @@ body {
   background-color: $firstSectionTheme;
   overflow-y: auto;
   overflow-x: unset;
-  h2, h3 {
+
+  h2,
+  h3 {
     @include setBorder(3px, solid, white, '-bottom');
     text-align: center;
-  };
+  }
+
+  ;
+
   h3 {
     border: unset;
   }
@@ -154,7 +162,8 @@ body {
 .ss-nav-link {
   display: block;
   font-size: 20px;
+
   &:hover {
-    transform: scale(1.08);  
+    transform: scale(1.08);
   }
 }
