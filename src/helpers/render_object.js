@@ -43,8 +43,11 @@ const renderTask = obj => {
   h2.innerText ='Task name: - ' + obj.title
   const p = it.is('p')
   p.innerText ='Due date: -' + obj.dueDate
-
-  container.append(h2, p)
+  const priority = it.is('div')
+  for (let i = 0; i < parseInt(obj.priority); i++) {
+    priority.innerHTML += '&#x2605;'
+  }
+  container.append(h2, p, priority)
   return container
 }
 
