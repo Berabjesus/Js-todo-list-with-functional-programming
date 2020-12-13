@@ -3,7 +3,7 @@ import { getAllCategories as tasks, renderUpcomingTasks as upcomingTasks } from 
 
 const firstSection = () => {
   const section = it.is('section');
-  section.classes('col-12 col-md-3 d-flex flex-column text-white h-100vh first-section');
+  section.classes('col-12 col-md-3 d-flex flex-column justify-content-start text-white h-100vh first-section');
   const h2 = it.is('h2');
   h2.classes('display-2 pb-4');
   h2.innerText = 'Clock.me';
@@ -13,9 +13,9 @@ const firstSection = () => {
   h3.innerText = 'Categories';
 
   const addCategoryButton = it.isAddButton('Add category', 'addCategory');
-  addCategoryButton.classes('mb-2');
+  addCategoryButton.classes('mb-auto');
 
-  section.append(h2, h3, addCategoryButton, tasks());
+  section.append(h2, h3, tasks(), addCategoryButton);
 
   return section;
 };
