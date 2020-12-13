@@ -7,6 +7,6 @@
          "ignoreFontFamilies": ["Eraser-Regular"]
        }
    ],
-   "at-rule-no-unknown": true,
+   "at-rule-no-unknown": true
  }
 }
