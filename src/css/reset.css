@@ -56,12 +56,10 @@ button:hover {
 
 img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .row {
   margin-left: 0;
   margin-right: 0;
 }
-
-/*# sourceMappingURL=reset.css.map */
