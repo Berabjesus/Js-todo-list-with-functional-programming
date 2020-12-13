@@ -10,7 +10,7 @@
       2.2 Globals - display
       2.3 Globals - border
 *   5. Sections
-*     5.1 left section
+*     5.1 first section
       5.2 section one
       5.3 section one
       5.4 section one
@@ -18,7 +18,7 @@
 
 
 /*** 1. Variables and Mixins ***/
-$leftSectionTheme : #01060a;
+$firstSectionTheme : #01060a;
 
 @mixin setBorder($width, $type, $color, $direction: "") {
   border#{$direction}: $width $type $color;
@@ -62,7 +62,7 @@ $leftSectionTheme : #01060a;
 
 @mixin customButtonProperties() {
   @include setBorder(3px, solid, white);
-  background-color: $leftSectionTheme;
+  background-color: $firstSectionTheme;
   &:hover {
     color: black;
     background-color: white;
@@ -89,7 +89,7 @@ $leftSectionTheme : #01060a;
   @include customButtonProperties();
   @include setPadding(0);
   @include selfFlexProperty(center);
-  background-color: $leftSectionTheme;
+  background-color: $firstSectionTheme;
   border-radius: 50%;
   width: 65px;
   font-size: 40px;
@@ -111,12 +111,12 @@ body {
   @include customScrollBar()
 }
 
-/*** 5.1 left section ***/
-.left-section {
+/*** 5.1 first section ***/
+.first-section {
   @include customScrollBar();
   @include setPadding(50px, -bottom);
   position: relative;
-  background-color: $leftSectionTheme;
+  background-color: $firstSectionTheme;
   overflow-y: auto;
   overflow-x: unset;
   h2, h3 {
@@ -134,15 +134,26 @@ body {
   border-top: unset;
 }
 
-/*** 5.1 left section ***/
-.middle-section {
-  @include setBorder(2px, solid, black);
-  border-left: unset;
+/*** 5.1 second section ***/
+.second-section {
+  @include customScrollBar();
+  @include setBorder(4px, solid, black);
   position: relative;
+  box-shadow: 1px 1px 30px black inset;
+  border-left: unset;
+  overflow-y: auto;
 }
 .new-task-btn {
   position: absolute;
   bottom: 0;
   left: 40%;
   font-weight: 900;
+}
+
+.ss-nav-link {
+  display: block;
+  font-size: 20px;
+  &:hover {
+    transform: scale(1.08);  
+  }
 }

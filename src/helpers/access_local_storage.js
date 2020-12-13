@@ -37,4 +37,4 @@ const getKeysFromLocalStorage = () => ((Object.keys(localStorage)).filter(key =>
 
 const setLocalStorageKey = newKey => localStorage.setItem(newKey, '[]');
 
-export {getTasksFromLocalStorage, setLocalStorage, getKeysFromLocalStorage,setLocalStorageKey}
+export {getTasksFromLocalStorage, setLocalStorage, getKeysFromLocalStorage,setLocalStorageKey, getSortedTasksBydate}

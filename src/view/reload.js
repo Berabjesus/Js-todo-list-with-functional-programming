@@ -1,4 +1,4 @@
-import {renderCategories as tasks} from '../helpers/collapsible_object'
+import {renderCategories as tasks} from '../helpers/render_object'
 
 export const reloadCategories = () => {
   const categoryContainer = document.getElementById('categoryContainer')
@@ -7,4 +7,13 @@ export const reloadCategories = () => {
     categoryContainer.lastElementChild;
   }
   categoryContainer.appendChild(tasks())
+}
+
+export const reloadMain = container => {
+  const secondSection = document.getElementById('secondSection')
+  while ( secondSection.lastElementChild) {
+    secondSection.removeChild(secondSection.lastElementChild);
+    secondSection.lastElementChild;
+  }
+  secondSection.appendChild(container)
 }

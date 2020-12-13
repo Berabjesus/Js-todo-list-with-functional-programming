@@ -6,12 +6,12 @@ import * as events from './helpers/event_listeners'
 
 const body = document.getElementsByTagName('body')[0]
 const main = it.mainContainer()
-main.append(home.leftSection(), home.middleSection())
+main.append(home.firstSection(), home.secondSection())
 body.prepend(main)
 
 events.addEventToCategoryModal()
 events.addEventToNewTaskModal()
 events.addSelectorUpdaterEvent()
-
+events.addNavButtonEvents()
 console.log(body);
 

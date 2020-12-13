@@ -1,6 +1,6 @@
 import it from '../modules/main_module';
 import {taskModal as modal} from './modals'
-import {getTasksFromLocalStorage as getTasks} from './access_local_storage'
+import {getTasksFromLocalStorage as getTasks, getSortedTasksBydate as sortedTasks} from './access_local_storage'
 
 const getAllCategories = () => {
     const mainContainer = it.is('div')
@@ -36,4 +36,33 @@ const renderCategories = () => {
     return mainContainer
 }
 
-export {getAllCategories, renderCategories}
+const renderTask = obj => {
+  const container = it.is('div')
+  container.classes('w-100 border shadow-sm my-2 px-2')
+  const h2 = it.is('h3')
+  h2.innerText ='Task name: - ' + obj.title
+  const p = it.is('p')
+  p.innerText ='Due date: -' + obj.dueDate
+
+  container.append(h2, p)
+  return container
+}
+
+const renderUpcomingTasks = () => {
+  const container = it.is('div') 
+  sortedTasks().upcomingTasks().map(obj => {
+    container.appendChild(renderTask(obj))
+  })
+  return container
+}
+
+const renderPastTasks = () => {
+  const container = it.is('div') 
+  sortedTasks().pastTasks().map(obj => {
+    container.appendChild(renderTask(obj))
+  })
+  return container
+}
+
+
+export {getAllCategories, renderCategories, renderUpcomingTasks, renderPastTasks}

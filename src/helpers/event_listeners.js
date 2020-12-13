@@ -1,7 +1,7 @@
-import {setLocalStorageKey as setKey, setLocalStorage as store} from './access_local_storage'
-import {getKeysFromLocalStorage as getKeys} from '../helpers/access_local_storage'
+import {setLocalStorageKey as setKey, setLocalStorage as store,getKeysFromLocalStorage as getKeys} from './access_local_storage'
 import it from '../modules/main_module';
 import * as reload from '../view/reload'
+import {renderPastTasks as pastTasks, renderUpcomingTasks as upcomingTasks} from '../helpers/render_object'
 
 const addEventToCategoryModal = ()=> {
   const addEventToCategoryButtonInModal = idSelector('addCategoryButton')
@@ -54,6 +54,17 @@ const addSelectorUpdaterEvent = () => {
   })
 }
 
+const addNavButtonEvents = () => {
+  const upcoming = document.getElementById('upcomingTasks')
+  const past = document.getElementById('pastTasks')
+  upcoming.addEventListener('click', () => {
+    reload.reloadMain(upcomingTasks())
+  })
+  past.addEventListener('click', () => {
+    reload.reloadMain(pastTasks())
+  })
+}
+
 const idSelector = id => {
   return document.getElementById(id)
 }
@@ -66,4 +77,4 @@ const isEmpty = target => {
   return target.length === 0 || !target.trim() 
 }
 
-export {addEventToCategoryModal, addEventToNewTaskModal, addSelectorUpdaterEvent}
+export {addEventToCategoryModal, addEventToNewTaskModal, addSelectorUpdaterEvent, addNavButtonEvents}
