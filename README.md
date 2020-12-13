@@ -14,10 +14,11 @@
 
 ## Live Demo
 
-[Clock.me Live Demo]()
+[Clock.me Live Demo](https://raw.githack.com/Berabjesus/Js-todo-list-with-functional-programming/working-branch/dist/index.html)
 
 # ScreenShots
 ### Home Page
+<img src="./public/ss.JPG" width="auto" height="auto" />
 
 ### Prerequisites
 - Web browser
