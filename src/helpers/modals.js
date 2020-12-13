@@ -1,4 +1,3 @@
-import {getKeysFromLocalStorage as getKeys} from '../helpers/access_local_storage'
 import it from '../modules/main_module';
 
 const taskModal = (obj, index) => {
@@ -51,15 +50,7 @@ const addCategoryModal = id => {
     </div>`
 }
 
-const addTaskModal = id => {
-  const select = it.is('select')
-  select.id = 'categoryOptions'
-  select.classes('form-control')
-  getKeys().map(option => {
-    const newOption = it.is('option') 
-    newOption.innerText = option
-    select.appendChild(newOption)
-  })
+const addTaskModal = (id) => {
   return `<div class="modal fade text-dark" id="${id}" tabindex="-1" role="dialog" aria-labelledby="${id}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -94,8 +85,8 @@ const addTaskModal = id => {
             </select>
           </div>
           <div class="form-group">
-            <label for="${select.id}">Task Category</label>` +
-            select.outerHTML + `
+            <label for="taskCategories">Task Category</label>
+            <select id="taskCategories" class="form-control"></select>
           </div>
           <button type="button" id= "${id}Button" class="btn btn-dark text-white">Add</button>
           <p class="text-dark text-center" id="${id}Notif"></p>

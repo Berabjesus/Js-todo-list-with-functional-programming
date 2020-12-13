@@ -76,6 +76,11 @@ $leftSectionTheme : #01060a;
 }
 
 /*** 2.2 Globals - display ***/
+.modal-content {
+  @include setBorder(1px, solid, black);
+  box-shadow: 2px 1px 10px rgb(92, 91, 91);
+}
+
 .h-100vh {
   height: 100vh;
 }

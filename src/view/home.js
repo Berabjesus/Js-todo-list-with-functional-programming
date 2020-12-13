@@ -1,6 +1,5 @@
 import it from '../modules/main_module';
 import {getAllCategories as tasks} from '../helpers/collapsible_object'
-import {addCategoryModal as categoryModal, addTaskModal as taskModal} from '../helpers/modals'
 
 const leftSection = () => {
   const section = it.is('section')
@@ -13,7 +12,7 @@ const leftSection = () => {
   header3.classes('h2 pb-2 mt-4 font-weight-lighter')
   header3.innerText = 'Categories'
 
-  const addCategoryButton = it.isAddButton('Add category', categoryModal('addCategory'), 'addCategory')
+  const addCategoryButton = it.isAddButton('Add category', 'addCategory')
   addCategoryButton.classes('mb-2')
   section.append(header2, header3,addCategoryButton, tasks())
 
@@ -29,8 +28,9 @@ const middleSection = () => {
   const pastTasks = it.is('div')
   pastTasks.classes('col-6')
   
-  const addNewTaskButton = it.isAddButton('Add New Task', taskModal('newTask'),'newTask')
+  const addNewTaskButton = it.isAddButton('Add New Task', 'newTask')
   addNewTaskButton.classes('mb-3 new-task-btn')
+
   section.append(upcomingTasks, pastTasks, addNewTaskButton)
   return section
 }
