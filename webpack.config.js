@@ -8,7 +8,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-  },  
+  },
   module: {
     rules: [
       {
@@ -60,13 +60,13 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         query: {
-            presets: ['@babel/preset-env']
-        }
+          presets: ['@babel/preset-env'],
+        },
       },
     ],
   },
   stats: {
-    colors: true
+    colors: true,
   },
   devtool: 'inline-source-map',
   plugins: [

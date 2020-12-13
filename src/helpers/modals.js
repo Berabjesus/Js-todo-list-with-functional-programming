@@ -1,7 +1,6 @@
 import it from '../modules/main_module';
 
-const taskModal = (obj, index) => {
-  return  `<div class="modal fade" id="clockDotMeModal-${index}" tabindex="-1" role="dialog" aria-labelledby="clockDotMeModalTitle" aria-hidden="true">
+const taskModal = (obj, index) => `<div class="modal fade" id="clockDotMeModal-${index}" tabindex="-1" role="dialog" aria-labelledby="clockDotMeModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -19,11 +18,9 @@ const taskModal = (obj, index) => {
           </div>
         </div>
       </div>
-  </div>`
-}
+  </div>`;
 
-const addCategoryModal = id => {
-  return `<div class="modal fade text-dark" id="${id}" tabindex="-1" role="dialog" aria-labelledby="${id}" aria-hidden="true">
+const addCategoryModal = id => `<div class="modal fade text-dark" id="${id}" tabindex="-1" role="dialog" aria-labelledby="${id}" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -47,11 +44,9 @@ const addCategoryModal = id => {
           </div>
         </div>
       </div>
-    </div>`
-}
+    </div>`;
 
-const addTaskModal = (id) => {
-  return `<div class="modal fade text-dark" id="${id}" tabindex="-1" role="dialog" aria-labelledby="${id}" aria-hidden="true">
+const addTaskModal = (id) => `<div class="modal fade text-dark" id="${id}" tabindex="-1" role="dialog" aria-labelledby="${id}" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -97,9 +92,6 @@ const addTaskModal = (id) => {
       </div>
     </div>
   </div>
-</div>`
-}
+</div>`;
 
-export {taskModal, addCategoryModal, addTaskModal}
-
-
+export { taskModal, addCategoryModal, addTaskModal };

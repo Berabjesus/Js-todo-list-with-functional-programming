@@ -1,9 +1,12 @@
-export const define = element =>{
-  const newObject = element
+const define = element => {
+  const newObject = element;
   Object.defineProperty(newObject, 'classes', {
-    value: function(classes) {
-     ( classes.split(' ').filter(str => str !== '')).map(newClass => this.classList.add(newClass))},
-    writable: false
+    value(classes) {
+      (classes.split(' ').filter(str => str !== '')).map(newClass => this.classList.add(newClass));
+    },
+    writable: false,
   });
-  return newObject
-}
+  return newObject;
+};
+
+export default define;
