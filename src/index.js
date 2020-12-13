@@ -11,4 +11,7 @@ body.prepend(main)
 
 events.addEventToCategoryModal()
 events.addEventToNewTaskModal()
+events.addSelectorUpdaterEvent()
+
 console.log(body);
+

@@ -1,4 +1,6 @@
 import {setLocalStorageKey as setKey, setLocalStorage as store} from './access_local_storage'
+import {getKeysFromLocalStorage as getKeys} from '../helpers/access_local_storage'
+import it from '../modules/main_module';
 import * as reload from '../view/reload'
 
 const addEventToCategoryModal = ()=> {
@@ -22,17 +24,34 @@ const addEventToNewTaskModal = () => {
   addEventToNewTaskButton.onclick = function() {
     const newtaskObject = {
       category: getValue('taskCategories'),
-      title: getValue('newTaskTitle'),
-      description: getValue('newTaskDesc'),
-      dueDate: getValue('newTaskDate'),
-      priority: getValue('newTaskpriority')
+      data: {
+        title: getValue('newTaskTitle'),
+        description: getValue('newTaskDesc'),
+        dueDate: getValue('newTaskDate'),
+        priority: getValue('newTaskpriority')  
+      }
     }
     const notif = idSelector('newTaskNotif')
-    Object.values(newtaskObject).some(value => isEmpty(value)) ? (() => notif.innerText = 'Fill all the fields')() : (() => {
+    isEmpty(newtaskObject.category) || Object.values(newtaskObject.data).some(value => isEmpty(value)) ? (() => notif.innerText = 'Fill all the fields')() : (() => {
       store(newtaskObject)
-      notif.innerText = newtaskObject.title + ' is added' 
+      notif.innerText = newtaskObject.data.title + ' is added' 
+      reload.reloadCategories()
     })()
   }
+}
+
+const addSelectorUpdaterEvent = () => {
+  const button = document.getElementById('middleSectionAddButton')
+  button.addEventListener("click", e => {
+    const categoriesInNewTaskModal = document.getElementById('taskCategories')
+    categoriesInNewTaskModal.innerHTML = ''
+    getKeys().map(option => {
+      const newOption = it.is('option') 
+      newOption.innerText = option
+      newOption.value = option
+      categoriesInNewTaskModal.appendChild(newOption)
+    })
+  })
 }
 
 const idSelector = id => {
@@ -47,4 +66,4 @@ const isEmpty = target => {
   return target.length === 0 || !target.trim() 
 }
 
-export {addEventToCategoryModal, addEventToNewTaskModal}
+export {addEventToCategoryModal, addEventToNewTaskModal, addSelectorUpdaterEvent}

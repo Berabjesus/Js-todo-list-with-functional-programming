@@ -14,6 +14,7 @@ const leftSection = () => {
 
   const addCategoryButton = it.isAddButton('Add category', 'addCategory')
   addCategoryButton.classes('mb-2')
+
   section.append(header2, header3,addCategoryButton, tasks())
 
   return section

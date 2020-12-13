@@ -78,15 +78,15 @@ const addTaskModal = (id) => {
             <label for="${id}Priority">Task Priority</label>
             <select name="priority" class= "form-control" id="${id}priority">
               <option value="1">1</option>
-              <option value="1">2</option>
-              <option value="1">3</option>
-              <option value="1">4</option>
-              <option value="1">5</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
           </div>
           <div class="form-group">
             <label for="taskCategories">Task Category</label>
-            <select id="taskCategories" class="form-control"></select>
+            <select name="categories" id="taskCategories" class="form-control"></select>
           </div>
           <button type="button" id= "${id}Button" class="btn btn-dark text-white">Add</button>
           <p class="text-dark text-center" id="newTaskNotif"></p>

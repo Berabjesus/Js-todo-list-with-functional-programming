@@ -1,12 +1,12 @@
 import * as object from '../helpers/define_object_property';
 import {addCategoryModal as categoryModal, addTaskModal as taskModal} from '../helpers/modals'
-import {getKeysFromLocalStorage as getKeys} from '../helpers/access_local_storage'
 
 const mainModule = (() => {
   const mainContainer = () => {
     const container = mainModule.is('main')
     container.id = 'mainContainer'
     container.classes('row d-flex')
+    
     return container
   };
   const is = type => {
@@ -42,22 +42,15 @@ const mainModule = (() => {
     addButton.innerText = '+'
     addButton.setAttribute("data-toggle", 'modal')
     addButton.setAttribute('data-target', `#${id}`)
-    const modal = id === 'addCategory' ? (() => categoryModal(id))() : (() => {
-      container.addEventListener("click", e => {
-        const categoriesInNewTaskModal = document.getElementById('taskCategories')
-        categoriesInNewTaskModal.innerHTML = ''
-        getKeys().map(option => {
-          const newOption = mainModule.is('option') 
-          newOption.innerText = option
-          newOption.value = option
-          categoriesInNewTaskModal.appendChild(newOption)
-        })
-      })
-      return taskModal(id)
-    })()
+    
     const text = mainModule.is('h5')
     text.classes('text-center my-1 font-weight-lighter')
     text.innerText = buttonDescription
+
+    const modal = id === 'addCategory' ? (() => categoryModal(id))() : (() => {
+      addButton.id = 'middleSectionAddButton'
+      return taskModal(id)
+    })()
 
     container.append(addButton, text)
     container.innerHTML += modal

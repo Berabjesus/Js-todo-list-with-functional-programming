@@ -15,7 +15,7 @@ const renderCategories = () => {
     const mainContainer = it.is('div')
     mainContainer.classes('d-flex flex-column')
     getTasks().map((category, index) => {
-      const categoryButton = it.isCollapsibleCategory(category.name, index)
+      const categoryButton = it.isCollapsibleCategory(category.category, index)
       const collapseContainer = it.is('div')
       collapseContainer.classes('collapse text-light px-3 pb-3')
       collapseContainer.id = `collapse-${index}`
