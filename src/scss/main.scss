@@ -61,6 +61,7 @@ $firstSectionTheme : #01060a;
 }
 
 @mixin customButtonProperties() {
+
   @include setBorder(3px, solid, white);
   background-color: $firstSectionTheme;
 
@@ -68,11 +69,10 @@ $firstSectionTheme : #01060a;
     color: black;
     background-color: white;
   }
-
-  ;
 }
 
 /*** 2. Globals ***/
+
 /*** 2.1 Globals - debug ***/
 .custom-border {
   @include setBorder(3px, dashed, red, '')
