@@ -13,4 +13,3 @@ events.addEventToCategoryModal();
 events.addEventToNewTaskModal();
 events.addSelectorUpdaterEvent();
 events.addNavButtonEvents();
-console.log(body);

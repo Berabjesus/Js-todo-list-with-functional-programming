@@ -1,5 +1,3 @@
-import it from '../modules/main_module';
-
 const taskModal = (obj, index) => `<div class="modal fade" id="clockDotMeModal-${index}" tabindex="-1" role="dialog" aria-labelledby="clockDotMeModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

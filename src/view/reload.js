@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import { renderCategories as tasks } from '../helpers/render_object';
 
 export const reloadCategories = () => {

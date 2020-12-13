@@ -1,5 +1,6 @@
 /* eslint-disable func-names */
 /* eslint-disable no-unused-expressions */
+/* eslint-disable max-len */
 
 import { setLocalStorageKey as setKey, setLocalStorage as store, getKeysFromLocalStorage as getKeys } from './access_local_storage';
 import it from '../modules/main_module';
@@ -41,19 +42,22 @@ const addEventToNewTaskModal = () => {
       },
     };
     const notif = idSelector('newTaskNotif');
-    isEmpty(newtaskObject.category) || Object.values(newtaskObject.data).some(value => isEmpty(value)) ? (() => notif.innerText = 'Fill all the fields')() : (() => {
+    isEmpty(newtaskObject.category) || Object.values(newtaskObject.data).some(value => isEmpty(value)) ? (() => {
+      notif.innerText = 'Fill all the fields';
+      return true;
+    })() : (() => {
       store(newtaskObject);
       notif.innerText = `${newtaskObject.data.title} is added`;
       reload.reloadCategories();
       reload.reloadMain(upcomingTasks());
-      return true
+      return true;
     })();
   };
 };
 
 const addSelectorUpdaterEvent = () => {
   const button = document.getElementById('middleSectionAddButton');
-  button.addEventListener('click', e => {
+  button.addEventListener('click', () => {
     const categoriesInNewTaskModal = document.getElementById('taskCategories');
     categoriesInNewTaskModal.innerHTML = '';
     getKeys().map(option => {
@@ -61,6 +65,7 @@ const addSelectorUpdaterEvent = () => {
       newOption.innerText = option;
       newOption.value = option;
       categoriesInNewTaskModal.appendChild(newOption);
+      return true;
     });
   });
 };
