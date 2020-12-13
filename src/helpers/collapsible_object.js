@@ -33,7 +33,6 @@ const renderCategories = () => {
       collapseContainer.appendChild(taskContainer)
       mainContainer.append(categoryButton, collapseContainer)
     })
-    console.log(mainContainer);
     return mainContainer
 }
 

@@ -7,8 +7,18 @@ const getTasksFromLocalStorage = () => {
     }
     return obj
   })
-  console.log(arrayOfFilteredTasks);
   return arrayOfFilteredTasks
+}
+
+const getSortedTasksBydate = () => {
+  const unsortedTasks =  getTasksFromLocalStorage().map(obj => obj.data.map(subObj => subObj))
+  let sum = new Array
+  unsortedTasks.map(arr => sum = sum.concat(arr))
+  const sortedTasks = sum.sort((a,b) => new Date(a.dueDate) - new Date(b.dueDate))
+  const pastTasks = () => sortedTasks.filter(obj => new Date(obj.dueDate) < new Date(Date.now()))
+  const upcomingTasks = () => sortedTasks.filter(obj => new Date(obj.dueDate) > new Date(Date.now()))
+
+  return {pastTasks, upcomingTasks}
 }
 
 const setLocalStorage = (object) => {
