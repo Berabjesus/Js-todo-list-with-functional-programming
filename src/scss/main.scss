@@ -61,8 +61,8 @@ $firstSectionTheme : #01060a;
 }
 
 @mixin customButtonProperties() {
-
   @include setBorder(3px, solid, white);
+
   background-color: $firstSectionTheme;
 
   &:hover {
@@ -75,12 +75,13 @@ $firstSectionTheme : #01060a;
 
 /*** 2.1 Globals - debug ***/
 .custom-border {
-  @include setBorder(3px, dashed, red, '')
+  @include setBorder(3px, dashed, red, '');
 }
 
 /*** 2.2 Globals - display ***/
 .modal-content {
   @include setBorder(1px, solid, black);
+
   box-shadow: 2px 1px 10px rgb(92, 91, 91);
 }
 
@@ -92,6 +93,7 @@ $firstSectionTheme : #01060a;
   @include customButtonProperties();
   @include setPadding(0);
   @include selfFlexProperty(center);
+
   background-color: $firstSectionTheme;
   border-radius: 50%;
   width: 65px;
@@ -100,6 +102,7 @@ $firstSectionTheme : #01060a;
 
 .task-btn {
   @include customButtonProperties();
+
   color: white;
   font-size: 25px;
 }
@@ -118,6 +121,7 @@ body {
 .first-section {
   @include customScrollBar();
   @include setPadding(50px, -bottom);
+
   position: relative;
   background-color: $firstSectionTheme;
   overflow-y: auto;
@@ -126,10 +130,9 @@ body {
   h2,
   h3 {
     @include setBorder(3px, solid, white, '-bottom');
+
     text-align: center;
   }
-
-  ;
 
   h3 {
     border: unset;
@@ -139,6 +142,7 @@ body {
 .task-container {
   @include setBorder(1px, solid, white);
   @include setPadding(10px);
+
   border-top: unset;
 }
 
@@ -146,6 +150,7 @@ body {
 .second-section {
   @include customScrollBar();
   @include setBorder(4px, solid, black);
+
   position: relative;
   box-shadow: 1px 1px 30px black inset;
   border-left: unset;
