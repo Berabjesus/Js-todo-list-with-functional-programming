@@ -12,6 +12,12 @@ module.exports = {
   module: {
     rules: [
       {
+        'import/no-unresolved': [
+          2,
+          { caseSensitive: false },
+        ],
+      },
+      {
         test: /\.scss$/,
         enforce: 'pre',
         use: [
