@@ -76,7 +76,7 @@ const addTaskModal = (id) => {
           </div>
           <div class="form-group">
             <label for="${id}Priority">Task Priority</label>
-            <select name="priority" class= "form-control" id="priority">
+            <select name="priority" class= "form-control" id="${id}priority">
               <option value="1">1</option>
               <option value="1">2</option>
               <option value="1">3</option>
@@ -89,7 +89,7 @@ const addTaskModal = (id) => {
             <select id="taskCategories" class="form-control"></select>
           </div>
           <button type="button" id= "${id}Button" class="btn btn-dark text-white">Add</button>
-          <p class="text-dark text-center" id="${id}Notif"></p>
+          <p class="text-dark text-center" id="newTaskNotif"></p>
         </form>
       </div>
       <div class="modal-footer">
