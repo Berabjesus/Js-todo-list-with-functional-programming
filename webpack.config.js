@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -11,12 +13,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        'import/no-unresolved': [
-          2,
-          { caseSensitive: false },
-        ],
-      },
       {
         test: /\.scss$/,
         enforce: 'pre',

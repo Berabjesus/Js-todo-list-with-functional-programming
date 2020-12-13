@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+
 import 'bootstrap';
 import './scss/main.scss';
 import it from './modules/main_module';
