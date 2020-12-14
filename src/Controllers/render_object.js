@@ -33,7 +33,7 @@ const getCategories = () => {
       })
       deleteButton.addEventListener('click', () => {
         subTask.category = category.category 
-        deleteTask(obj)
+        deleteTask(subTask)
       })
       taskAction.append(editButton, deleteButton)
       const subContainer = it.is('div')

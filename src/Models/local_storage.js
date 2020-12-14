@@ -37,11 +37,14 @@ const getSortedTasksBydate = () => {
   return { pastTasks, upcomingTasks };
 };
 
-const setLocalStorage = (object, id = null, remove = false) => {
+const setLocalStorage = (object, edit = false, remove = false) => {
   const newArr = [object.data];
   const category = `${object.category}clock.me`;
   getKeysFromLocalStorage().some(key => key === object.category) ? (() => {
     const data = JSON.parse(localStorage.getItem(category));
+    if (id) {
+
+    }
     const newData = data.concat(newArr);
     localStorage.setItem(category, JSON.stringify(newData));
   })() : (() => {
