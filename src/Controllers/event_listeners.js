@@ -28,16 +28,16 @@ const addEventToCategoryModal = () => {
 
 const addEventToNewTaskModal = () => {
   const addEventToNewTaskButton = idSelector('newTaskButton');
-  const newtaskObject = {
-    category: getValue('taskCategories'),
-    data: {
-      title: getValue('newTaskTitle'),
-      description: getValue('newTaskDesc'),
-      dueDate: getValue('newTaskDate'),
-      priority: getValue('newTaskpriority'),
-    },
-  };
   addEventToNewTaskButton.onclick = function () {
+    const newtaskObject = {
+      category: getValue('taskCategories'),
+      data: {
+        title: getValue('newTaskTitle'),
+        description: getValue('newTaskDesc'),
+        dueDate: getValue('newTaskDate'),
+        priority: getValue('newTaskpriority'),
+      },
+    };
      reload.sharedEvent(newtaskObject, 'newTaskNotif')
   }
 };

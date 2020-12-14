@@ -41,11 +41,12 @@ const setLocalStorage = (object, edit = false, remove = false) => {
   const newArr = [object.data];
   const category = `${object.category}clock.me`;
   getKeysFromLocalStorage().some(key => key === object.category) ? (() => {
-    const data = JSON.parse(localStorage.getItem(category));
-    if (id) {
-
+    const originalData = JSON.parse(localStorage.getItem(category));
+    if (edit) {
+      console.log(originalData);
+      // .data[object.id]
     }
-    const newData = data.concat(newArr);
+    const newData = originalData.concat(newArr);
     localStorage.setItem(category, JSON.stringify(newData));
   })() : (() => {
     localStorage.setItem(category, JSON.stringify(newArr));

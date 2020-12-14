@@ -116,23 +116,24 @@ export const editTask = task => {
         priority: document.getElementById('editpriority').value,
       },
     };
-    sharedEvent(newtaskObject, 'editnewTaskNotif')   
+    sharedEvent(newtaskObject, 'editnewTaskNotif', true)
+    task.category !== newtaskObject.category ? deleteTask(task) : false
   });
   taskDescriptionTarget.appendChild(button)
 }
 
 export const deleteTask = obj => {
-  // store(obj, obj.id, true)
-  console.log('asdasd1123');
+  store(obj,false,true)
+  // console.log('asdasd1123');
 }
 
-export const sharedEvent = (obj, notifId) => {
+export const sharedEvent = (obj, notifId, bool = false) => {
   const notif = document.getElementById(notifId);
   isEmpty(obj.category) || Object.values(obj.data).some(value => isEmpty(value)) ? (() => {
     notif.innerText = 'Fill all the fields';
     return true;
   })() : (() => {
-    store(obj, obj.id);
+    bool ? store(obj, true) : store(obj);
     notif.innerText = `${obj.data.title} is added`;
     reloadCategories(categories());
     reloadMain(upcomingTasks());
