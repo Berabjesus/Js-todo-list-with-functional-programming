@@ -121,13 +121,17 @@ export const editTask = task => {
   taskDescriptionTarget.appendChild(button)
 }
 
+export const deleteTask = obj => {
+  store(obj, obj.id, true)
+}
+
 export const sharedEvent = (obj, notifId) => {
   const notif = document.getElementById(notifId);
   isEmpty(obj.category) || Object.values(obj.data).some(value => isEmpty(value)) ? (() => {
     notif.innerText = 'Fill all the fields';
     return true;
   })() : (() => {
-    store(obj);
+    store(obj, id);
     notif.innerText = `${obj.data.title} is added`;
     reloadCategories(categories());
     reloadMain(upcomingTasks());

@@ -12,6 +12,9 @@ const getAllTasksFromLocalStorage = () => {
       category: key,
       data: JSON.parse(localStorage.getItem(`${key}clock.me`)),
     };
+    obj.data.map((arr,i) => {
+      arr.id = i
+    })
     return obj;
   });
   return arrayOfFilteredTasks;
@@ -34,7 +37,7 @@ const getSortedTasksBydate = () => {
   return { pastTasks, upcomingTasks };
 };
 
-const setLocalStorage = (object) => {
+const setLocalStorage = (object, id = null, remove = false) => {
   const newArr = [object.data];
   const category = `${object.category}clock.me`;
   getKeysFromLocalStorage().some(key => key === object.category) ? (() => {
@@ -45,8 +48,6 @@ const setLocalStorage = (object) => {
     localStorage.setItem(category, JSON.stringify(newArr));
   })();
 };
-
-// const editLocalStorage = ()
 
 export {
   getAllTasksFromLocalStorage, setLocalStorage, getKeysFromLocalStorage, setLocalStorageKey, getSortedTasksBydate,

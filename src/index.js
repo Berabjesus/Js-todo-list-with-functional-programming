@@ -15,4 +15,10 @@ events.addEventToCategoryModal();
 events.addEventToNewTaskModal();
 events.addSelectUpdaterEvent();
 events.addNavButtonEvents();
-events.editTaskEvent()
+
+// let data = JSON.parse(localStorage.getItem('Studiesclock.me'))
+// console.log(data);
+// data.splice(2,1)
+// let bool = data
+// // // console.log(data);
+// console.log(bool);

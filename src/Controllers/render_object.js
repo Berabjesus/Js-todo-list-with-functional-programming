@@ -2,7 +2,7 @@
 
 import it from '../helpers/main_module';
 import { getAllTasksFromLocalStorage as getTasks, getSortedTasksBydate as sortedTasks } from '../Models/local_storage';
-import {reloadTaskDescription as reload, editTask} from './reload';
+import {reloadTaskDescription as reload, editTask, deleteTask} from './reload';
 
 const getCategories = () => {
   const mainContainer = it.is('div');
@@ -30,6 +30,10 @@ const getCategories = () => {
       editButton.addEventListener('click', () => {
         subTask.category = category.category      
         editTask(subTask)
+      })
+      deleteButton.addEventListener('click', () => {
+        subTask.category = category.category 
+        deleteTask(obj)
       })
       taskAction.append(editButton, deleteButton)
       const subContainer = it.is('div')
@@ -80,6 +84,9 @@ const getTask = obj => {
   deleteButton.classes('ss-action');
   editButton.addEventListener('click', () => {
     editTask(obj)
+  })
+  deleteButton.addEventListener('click', () => {
+    deleteTask(obj)
   })
   taskAction.append(editButton, deleteButton)
 

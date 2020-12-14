@@ -68,10 +68,6 @@ const addNavButtonEvents = () => {
   });
 };
 
-const editTaskEvent = () => {
-  console.log('0000000000');
-}
-
 export {
-  addEventToCategoryModal, addEventToNewTaskModal, addSelectUpdaterEvent, addNavButtonEvents, editTaskEvent
+  addEventToCategoryModal, addEventToNewTaskModal, addSelectUpdaterEvent, addNavButtonEvents
 };
