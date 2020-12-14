@@ -11,6 +11,7 @@ const mainModule = (() => {
   };
   const is = type => {
     const element = document.createElement(type);
+    element.cloneNode(true)
     define(element);
     return element;
   };
@@ -26,7 +27,7 @@ const mainModule = (() => {
     collapsibleCategory.appendChild(span);
     return collapsibleCategory;
   };
-  const isClickableTask = (taskTitle, index) => {
+  const isClickableTask = (taskTitle) => {
     const clickableTask = mainModule.is('a');
     clickableTask.classes('btn btn-dark mb-1 w-100 task-btn subtasks-btn');
     clickableTask.innerText = taskTitle;

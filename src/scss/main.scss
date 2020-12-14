@@ -147,17 +147,25 @@ body {
 }
 
 .task-container {
-  @include setBorder(1px, solid, white);
+  @include setBorder(1px, dashed, white);
   @include setPadding(10px);
 
-  border-top: unset;
+}
+.fs-action {
+  background-color: $firstSectionTheme;
+  border-radius: 5px;
+  color: white;
+  &:hover {
+    color: black;
+    background-color: white;
+  }
 }
 
 /*** 5.2 second section ***/
 .second-section {
   @include customScrollBar();
-  @include setBorder(4px, solid, black);
-  box-shadow: 1px 1px 30px black inset;
+  @include setBorder(1px, solid, black);
+  box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.493) inset;
   border-left: unset;
   overflow-y: auto;
 }
@@ -222,9 +230,16 @@ body {
   position: fixed;
   z-index: 1050;
   right: 0;
-  width: 25vw;
-  border-left: unset;
+  width: 33.3vw;
   .h5 {
     @include customScrollBar();
+  }
+}
+
+.ts-action-container {
+  button {
+    @include setBorder(1px, solid,black, '');
+    @include setMargin(3px);
+    display: block;
   }
 }

@@ -13,5 +13,6 @@ body.prepend(main);
 
 events.addEventToCategoryModal();
 events.addEventToNewTaskModal();
-events.addSelectorUpdaterEvent();
+events.addSelectUpdaterEvent();
 events.addNavButtonEvents();
+events.editTaskEvent()

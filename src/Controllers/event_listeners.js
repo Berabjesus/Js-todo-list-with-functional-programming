@@ -55,7 +55,7 @@ const addEventToNewTaskModal = () => {
   };
 };
 
-const addSelectorUpdaterEvent = () => {
+const addSelectUpdaterEvent = () => {
   const button = document.getElementById('middleSectionAddButton');
   button.addEventListener('click', () => {
     const categoriesInNewTaskModal = document.getElementById('taskCategories');
@@ -81,6 +81,10 @@ const addNavButtonEvents = () => {
   });
 };
 
+const editTaskEvent = () => {
+  console.log('0000000000');
+}
+
 export {
-  addEventToCategoryModal, addEventToNewTaskModal, addSelectorUpdaterEvent, addNavButtonEvents,
+  addEventToCategoryModal, addEventToNewTaskModal, addSelectUpdaterEvent, addNavButtonEvents, editTaskEvent
 };

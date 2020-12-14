@@ -16,14 +16,26 @@ const getCategories = () => {
     const taskContainer = it.is('div');
     taskContainer.classes('d-flex flex-column mx-auto text-dark task-container');
 
-    category.data.map((subTask, taskIndex) => {
-      const uniqueId = `${index}-${taskIndex}`;
-      const button = it.isClickableTask(subTask.title, uniqueId);
+    category.data.map((subTask) => {
+      const button = it.isClickableTask(subTask.title);
       button.addEventListener('click', () => {
-        subTask.category = category.category
         reload(subTask)
       })
-      taskContainer.appendChild(button);
+      const taskAction = it.is('div');
+      taskAction.classes('pt-2');
+      const [editButton, deleteButton] = [it.is('button') , it.is('button')];
+      [editButton.innerText, deleteButton.innerText] = ['Edit', 'Delete']
+      editButton.classes('fs-action border');
+      deleteButton.classes('fs-action ml-2 border');
+      editButton.addEventListener('click', () => {
+        subTask.category = category.category      
+        editTask(subTask)
+      })
+      taskAction.append(editButton, deleteButton)
+      const subContainer = it.is('div')
+      subContainer.classes('border-bottom border-white pb-2 mb-3')
+      subContainer.append(button, taskAction)
+      taskContainer.appendChild(subContainer);
     });
 
     collapseContainer.appendChild(taskContainer);
@@ -59,9 +71,7 @@ const getTask = obj => {
   }
   header.append(title, priority)
   taskButton.append(header, dueDate);
-  taskButton.addEventListener('click', () => {
-    reload(obj)
-  })
+
   const taskAction = it.is('div');
   taskAction.classes('ss-action-container');
   const [editButton, deleteButton] = [it.is('button') , it.is('button')];
@@ -72,6 +82,10 @@ const getTask = obj => {
     editTask(obj)
   })
   taskAction.append(editButton, deleteButton)
+
+  taskButton.addEventListener('click', () => {
+    reload(obj)
+  })
   container.append(taskButton, taskAction)
   return container;
 };

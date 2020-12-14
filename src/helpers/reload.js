@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import it from './main_module';
-import { setLocalStorageKey as setKey, setLocalStorage as store, getKeysFromLocalStorage as getKeys } from '../Models/local_storage';
+import { getKeysFromLocalStorage as getKeys } from '../Models/local_storage';
 
 export const reloadCategories = container => {
   const categoryContainer = document.getElementById('categoryContainer');
@@ -20,7 +20,7 @@ export const reloadMain = container => {
   secondSection.appendChild(container);
 };
 
-export const reloadTaskDescription = task => {
+export const reloadTaskDescription = (task, ...taskAction) => {
   const taskDescriptionTarget = document.getElementById('taskDescriptionContainer');
   const container = it.is('div')
   container.classes('d-flex flex-column px-2')
@@ -55,31 +55,29 @@ export const reloadTaskDescription = task => {
 }
 
 export const editTask = task => {
+  console.log(task);
   const taskDescriptionTarget = document.getElementById('taskDescriptionContainer');
   const selectTag = getKeys().map(option => {
     const newOption = it.is('option');
     newOption.innerText = option;
-    console.log(task.category);
-    console.log(option);
     newOption.value = option;
     if (task.category === option)
-      newOption.setAttribute('selected') 
+      newOption.setAttribute('selected', 'selected') 
     return newOption;
   });
-  console.log(selectTag[0].outerHTML);
   taskDescriptionTarget.innerHTML = ''
   taskDescriptionTarget.innerHTML = `<form class="px-2">
   <div class="form-group">
     <label for="Title">Task title</label>
-    <input type="text" class="form-control" id="Title" aria-describedby="Title" placeholder="Enter new category">
+    <input type="text" class="form-control" id="Title" aria-describedby="Title" placeholder="Enter new category" value = "${task.title}">
   </div>
   <div class="form-group">
     <label for="Desc">Task Description</label>
-    <textarea class="form-control" name="Description" id="Desc" cols="30" rows="5" placeholder="Enter Description"></textarea>
+    <textarea class="form-control" name="Description" id="Desc" cols="30" rows="5" placeholder="Enter Description">${task.description}</textarea>
   </div>
   <div class="form-group">
     <label for="Date">Task Due Date</label>
-    <input type="date" class="form-control" id="Date" aria-describedby="Date">
+    <input type="date" class="form-control" id="Date" aria-describedby="Date" value="${task.dueDate}">
   </div>
   <div class="form-group">
     <label for="Priority">Task Priority</label>
@@ -99,7 +97,7 @@ export const editTask = task => {
     }
     </select>
   </div>
-  <button type="button" id= "Button" class="btn btn-dark text-white">Edit</button>
+  <button type="button" id= "Button" class="btn btn-dark text-white" onclick= "editTaskEvent()">Edit</button>
   <p class="text-dark text-center" id="newTaskNotif"></p>
 </form>`
 }
