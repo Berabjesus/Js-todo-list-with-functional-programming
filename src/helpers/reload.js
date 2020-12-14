@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import it from './main_module';
+import { setLocalStorageKey as setKey, setLocalStorage as store, getKeysFromLocalStorage as getKeys } from '../Models/local_storage';
 
 export const reloadCategories = container => {
   const categoryContainer = document.getElementById('categoryContainer');
@@ -30,14 +31,16 @@ export const reloadTaskDescription = task => {
   title.innerText = task.title;
   const dueDate = it.is('p');
   dueDate.innerText = "Due date - " + task.dueDate 
+  const category = it.is('h5')
+  category.innerText = "Category - " + task.category
   const priority = it.is('h5');
-  priority.classes('h5')
+  priority.classes('h5 mt-2')
   priority.innerText = 'Priority - '
   for (let i = 0; i < parseInt(task.priority, 10); i += 1) {
     priority.innerHTML += '&#x2605;';
   }
   header.classes('border-bottom border-dark pb-2')
-  header.append(title, priority, dueDate)
+  header.append(title,category, priority, dueDate)
 
   const description = it.is('div')
   description.classes('pt-2 h5 overflow-auto')
@@ -56,9 +59,14 @@ export const editTask = task => {
   const selectTag = getKeys().map(option => {
     const newOption = it.is('option');
     newOption.innerText = option;
+    console.log(task.category);
+    console.log(option);
     newOption.value = option;
-    return true;
+    if (task.category === option)
+      newOption.setAttribute('selected') 
+    return newOption;
   });
+  console.log(selectTag[0].outerHTML);
   taskDescriptionTarget.innerHTML = ''
   taskDescriptionTarget.innerHTML = `<form class="px-2">
   <div class="form-group">
@@ -87,7 +95,7 @@ export const editTask = task => {
     <label for="taskCategories">Task Category</label>
     <select name="categories" id="taskCategories" class="form-control">
     ${
-      selectTag[0]
+      selectTag.map(tag => tag.outerHTML)
     }
     </select>
   </div>

@@ -20,6 +20,7 @@ const getCategories = () => {
       const uniqueId = `${index}-${taskIndex}`;
       const button = it.isClickableTask(subTask.title, uniqueId);
       button.addEventListener('click', () => {
+        subTask.category = category.category
         reload(subTask)
       })
       taskContainer.appendChild(button);

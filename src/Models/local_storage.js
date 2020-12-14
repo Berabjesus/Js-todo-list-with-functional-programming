@@ -19,7 +19,7 @@ const getAllTasksFromLocalStorage = () => {
 
 const getSortedTasksBydate = () => {
   const unsortedTasks = getAllTasksFromLocalStorage().map(obj => obj.data.map(subObj =>{
-    subObj.type = obj.category
+    subObj.category = obj.category
     return subObj
   }));
   let sum = [];
