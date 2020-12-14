@@ -1,5 +1,5 @@
-import define from '../helpers/define_object_property';
-import { addCategoryModal as categoryModal, addTaskModal as taskModal } from '../helpers/modals';
+import define from './define_object_property';
+import { addCategoryModal as categoryModal, addTaskModal as taskModal } from './modals';
 
 const mainModule = (() => {
   const mainContainer = () => {

@@ -1,5 +1,5 @@
-import it from '../modules/main_module';
-import { getAllCategories as tasks, renderUpcomingTasks as upcomingTasks } from '../helpers/render_object';
+import it from '../helpers/main_module';
+import { getAllCategories as tasks, getUpcomingTasks as upcomingTasks } from '../Controllers/render_object';
 
 const firstSection = () => {
   const section = it.is('section');
@@ -12,19 +12,19 @@ const firstSection = () => {
   h3.classes('h2 pb-2 mt-4 font-weight-lighter');
   h3.innerText = 'Categories';
 
-  const addCategoryButton = it.isAddButton('Add category', 'addCategory');
-  addCategoryButton.classes('mb-auto');
+  const addCategory = it.isAddButton('Add category', 'addCategory');
+  addCategory.classes('mb-auto');
 
-  section.append(h2, h3, tasks(), addCategoryButton);
+  section.append(h2, h3, tasks(), addCategory);
 
   return section;
 };
 
 const secondSection = () => {
   const section = it.is('section');
-  section.classes('col-12 col-md-9 d-flex text-dark p-0 h-100vh second-section');
+  section.classes('col-12 col-md-6 d-flex text-dark h-100vh second-section');
   const task = it.is('div');
-  task.classes('col-md-7 pt-5 d-flex flex-column');
+  task.classes('col-md-12 pt-5 d-flex flex-column');
   const nav = it.is('nav');
   nav.classes('d-flex border-bottom border-dark w-100 px-4 pb-3 ');
   const link = (text, id) => {
@@ -38,22 +38,33 @@ const secondSection = () => {
   const [upcoming, past] = [link('Upcoming tasks', 'upcomingTasks'), link('Past tasks', 'pastTasks')];
   past.classes('border-left border-dark pl-3 ml-3');
 
-  const addNewTaskButton = it.isAddButton('Add New Task', 'newTask');
-  addNewTaskButton.classes('mb-3 new-task-btn');
+  const addNewTask = it.isAddButton('Add New Task', 'newTask');
+  addNewTask.classes('mb-3 new-task-btn');
   nav.append(upcoming, past);
 
   const content = it.is('div');
+  content.classes('second-section-content')
   content.id = 'secondSection';
   content.append(upcomingTasks());
 
   task.append(nav, content);
 
-  section.append(task, addNewTaskButton);
+  section.append(task, addNewTask);
   return section;
 };
 
+const thirdSection = () => {
+  const section = it.is('section')
+  section.classes('d-flex flex-column text-dark h-100vh pt-5 border border-dark third-section');
+  const header = it.is('h2')
+  header.innerText = 'Task Description'
+  header.classes('border-bottom border-dark pb-3 text-center')
+  section.append(header)
+  return section
+}
+
 const home = () => ({
-  firstSection, secondSection,
+  firstSection, secondSection, thirdSection,
 });
 
 export default home();

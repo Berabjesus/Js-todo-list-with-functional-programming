@@ -5,7 +5,7 @@ const getKeysFromLocalStorage = () => ((Object.keys(localStorage)).filter(key =>
 
 const setLocalStorageKey = newKey => localStorage.setItem(newKey, '[]');
 
-const getTasksFromLocalStorage = () => {
+const getAllTasksFromLocalStorage = () => {
   const appSpecificKeys = getKeysFromLocalStorage();
   const arrayOfFilteredTasks = appSpecificKeys.map(key => {
     const obj = {
@@ -18,8 +18,13 @@ const getTasksFromLocalStorage = () => {
 };
 
 const getSortedTasksBydate = () => {
-  const unsortedTasks = getTasksFromLocalStorage().map(obj => obj.data.map(subObj => subObj));
+  const unsortedTasks = getAllTasksFromLocalStorage().map(obj => obj.data.map(subObj =>{
+    subObj.type = obj.category
+    return subObj
+  }));
   let sum = [];
+  console.log(unsortedTasks);
+
   unsortedTasks.map(arr => {
     sum = sum.concat(arr);
     return true;
@@ -27,7 +32,6 @@ const getSortedTasksBydate = () => {
   const sortedTasks = sum.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
   const pastTasks = () => sortedTasks.filter(obj => new Date(obj.dueDate) < new Date(Date.now()));
   const upcomingTasks = () => sortedTasks.filter(obj => new Date(obj.dueDate) > new Date(Date.now()));
-
   return { pastTasks, upcomingTasks };
 };
 
@@ -43,6 +47,8 @@ const setLocalStorage = (object) => {
   })();
 };
 
+// const editLocalStorage = ()
+
 export {
-  getTasksFromLocalStorage, setLocalStorage, getKeysFromLocalStorage, setLocalStorageKey, getSortedTasksBydate,
+  getAllTasksFromLocalStorage, setLocalStorage, getKeysFromLocalStorage, setLocalStorageKey, getSortedTasksBydate,
 };

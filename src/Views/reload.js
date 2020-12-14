@@ -1,13 +1,11 @@
 /* eslint-disable no-unused-expressions */
-import { renderCategories as tasks } from '../helpers/render_object';
-
-export const reloadCategories = () => {
+export const reloadCategories = container => {
   const categoryContainer = document.getElementById('categoryContainer');
   while (categoryContainer.lastElementChild) {
     categoryContainer.removeChild(categoryContainer.lastElementChild);
     categoryContainer.lastElementChild;
   }
-  categoryContainer.appendChild(tasks());
+  categoryContainer.appendChild(container);
 };
 
 export const reloadMain = container => {

@@ -2,13 +2,13 @@
 
 import 'bootstrap';
 import './scss/main.scss';
-import it from './modules/main_module';
-import home from './view/home';
-import * as events from './helpers/event_listeners';
+import module from './helpers/main_module';
+import home from './Views/home';
+import * as events from './Controllers/event_listeners';
 
 const body = document.getElementsByTagName('body')[0];
-const main = it.mainContainer();
-main.append(home.firstSection(), home.secondSection());
+const main = module.mainContainer();
+main.append(home.firstSection(), home.secondSection(),home.thirdSection());
 body.prepend(main);
 
 events.addEventToCategoryModal();

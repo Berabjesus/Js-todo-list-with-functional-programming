@@ -2,10 +2,10 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 
-import { setLocalStorageKey as setKey, setLocalStorage as store, getKeysFromLocalStorage as getKeys } from './access_local_storage';
-import it from '../modules/main_module';
-import * as reload from '../view/reload';
-import { renderPastTasks as pastTasks, renderUpcomingTasks as upcomingTasks } from './render_object';
+import { setLocalStorageKey as setKey, setLocalStorage as store, getKeysFromLocalStorage as getKeys } from '../Models/local_storage';
+import it from '../helpers/main_module';
+import * as reload from '../Views/reload';
+import {getCategories as categories, getPastTasks as pastTasks, getUpcomingTasks as upcomingTasks } from './render_object';
 
 const idSelector = id => document.getElementById(id);
 
@@ -22,7 +22,7 @@ const addEventToCategoryModal = () => {
       notif.innerText = 'Empty Key is not allowed';
     })() : (() => {
       setKey(`${value}clock.me`);
-      reload.reloadCategories();
+      reload.reloadCategories(categories());
       notif.innerText = `${value} is added to the categories`;
     })();
   };
@@ -48,7 +48,7 @@ const addEventToNewTaskModal = () => {
     })() : (() => {
       store(newtaskObject);
       notif.innerText = `${newtaskObject.data.title} is added`;
-      reload.reloadCategories();
+      reload.reloadCategories(categories());
       reload.reloadMain(upcomingTasks());
       return true;
     })();

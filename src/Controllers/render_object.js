@@ -1,10 +1,10 @@
 /* eslint-disable array-callback-return */
 
-import it from '../modules/main_module';
-import { taskModal as modal } from './modals';
-import { getTasksFromLocalStorage as getTasks, getSortedTasksBydate as sortedTasks } from './access_local_storage';
+import it from '../helpers/main_module';
+import { taskModal as modal } from '../helpers/modals';
+import { getAllTasksFromLocalStorage as getTasks, getSortedTasksBydate as sortedTasks } from '../Models/local_storage';
 
-const renderCategories = () => {
+const getCategories = () => {
   const mainContainer = it.is('div');
   mainContainer.classes('d-flex flex-column');
   getTasks().map((category, index) => {
@@ -34,41 +34,42 @@ const getAllCategories = () => {
   mainContainer.id = 'categoryContainer';
   mainContainer.classes('d-flex flex-column mb-3');
 
-  mainContainer.appendChild(renderCategories());
+  mainContainer.appendChild(getCategories());
   return mainContainer;
 };
 
-const renderTask = obj => {
-  const container = it.is('div');
-  container.classes('w-100 border shadow-sm my-2 px-2');
-  const h2 = it.is('h3');
-  h2.innerText = `Task name: - ${obj.title}`;
+const getTask = obj => {
+  const container = it.is('button');
+  container.classes('d-flex flex-column w-100 my-2 px-2 ss-task-btn');
+  const h4 = it.is('h4');
+  h4.innerText = `Task name - ${obj.title}`;
   const p = it.is('p');
-  p.innerText = `Due date: -${obj.dueDate}`;
+  p.innerText = `Due date -${obj.dueDate}`;
   const priority = it.is('div');
+  priority.innerText = 'Priority - ' 
   for (let i = 0; i < parseInt(obj.priority, 10); i += 1) {
     priority.innerHTML += '&#x2605;';
   }
-  container.append(h2, p, priority);
+  container.append(h4, p, priority);
   return container;
 };
 
-const renderUpcomingTasks = () => {
+const getUpcomingTasks = () => {
   const container = it.is('div');
   sortedTasks().upcomingTasks().map(obj => {
-    container.appendChild(renderTask(obj));
+    container.appendChild(getTask(obj));
   });
   return container;
 };
 
-const renderPastTasks = () => {
+const getPastTasks = () => {
   const container = it.is('div');
   sortedTasks().pastTasks().map(obj => {
-    container.appendChild(renderTask(obj));
+    container.appendChild(getTask(obj));
   });
   return container;
 };
 
 export {
-  getAllCategories, renderCategories, renderUpcomingTasks, renderPastTasks,
+  getAllCategories, getCategories, getUpcomingTasks, getPastTasks,
 };

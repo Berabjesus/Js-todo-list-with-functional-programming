@@ -145,21 +145,24 @@ body {
   border-top: unset;
 }
 
-/*** 5.1 second section ***/
+/*** 5.2 second section ***/
 .second-section {
   @include customScrollBar();
   @include setBorder(4px, solid, black);
-
   position: relative;
   box-shadow: 1px 1px 30px black inset;
   border-left: unset;
   overflow-y: auto;
 }
 
+.second-section-content {
+  @include setPadding(120px, '-bottom');
+}
+
 .new-task-btn {
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  left: 40%;
+  left: 50%;
   font-weight: 900;
 }
 
@@ -170,4 +173,24 @@ body {
   &:hover {
     transform: scale(1.08);
   }
+}
+
+.ss-task-btn {
+  transition: all 0.1s linear;
+  @include setBorder(1px, solid, black, '');
+
+  &:hover {
+    @include setBorder(3px, solid, black, '');
+    transform: scale(1.02);
+    box-shadow: 1px 1px 40px rgb(185, 182, 182);
+  }
+}
+
+/*** 5.3 third section ***/
+
+.third-section {
+  position: fixed;
+  right: 0;
+  width: 25vw;
+  border-left: unset;
 }
