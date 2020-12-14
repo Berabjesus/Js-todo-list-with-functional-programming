@@ -4,7 +4,7 @@
 
 import { setLocalStorageKey as setKey, setLocalStorage as store, getKeysFromLocalStorage as getKeys } from '../Models/local_storage';
 import it from '../helpers/main_module';
-import * as reload from '../Views/reload';
+import * as reload from '../helpers/reload';
 import {getCategories as categories, getPastTasks as pastTasks, getUpcomingTasks as upcomingTasks } from './render_object';
 
 const idSelector = id => document.getElementById(id);

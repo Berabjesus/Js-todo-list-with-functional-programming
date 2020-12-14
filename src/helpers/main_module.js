@@ -30,8 +30,6 @@ const mainModule = (() => {
     const clickableTask = mainModule.is('a');
     clickableTask.classes('btn btn-dark mb-1 w-100 task-btn subtasks-btn');
     clickableTask.innerText = taskTitle;
-    clickableTask.setAttribute('data-toggle', 'modal');
-    clickableTask.setAttribute('data-target', `#clockDotMeModal-${index}`);
     return clickableTask;
   };
   const isAddButton = (buttonDescription, id) => {

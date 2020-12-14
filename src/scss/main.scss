@@ -111,6 +111,14 @@ $firstSectionTheme : #01060a;
   border-width: 1px;
 }
 
+.modal-dialog {
+  z-index: 1050;
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
 /*** 5. Sections ***/
 body {
   @include customScrollBar();
@@ -149,7 +157,6 @@ body {
 .second-section {
   @include customScrollBar();
   @include setBorder(4px, solid, black);
-  position: relative;
   box-shadow: 1px 1px 30px black inset;
   border-left: unset;
   overflow-y: auto;
@@ -190,6 +197,7 @@ body {
 
 .third-section {
   position: fixed;
+  z-index: 1050;
   right: 0;
   width: 25vw;
   border-left: unset;

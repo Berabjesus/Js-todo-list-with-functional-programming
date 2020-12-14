@@ -1,8 +1,8 @@
 /* eslint-disable array-callback-return */
 
 import it from '../helpers/main_module';
-import { taskModal as modal } from '../helpers/modals';
 import { getAllTasksFromLocalStorage as getTasks, getSortedTasksBydate as sortedTasks } from '../Models/local_storage';
+import {reloadTaskDescription as reload} from '../helpers/reload';
 
 const getCategories = () => {
   const mainContainer = it.is('div');
@@ -19,8 +19,10 @@ const getCategories = () => {
     category.data.map((subTask, taskIndex) => {
       const uniqueId = `${index}-${taskIndex}`;
       const button = it.isClickableTask(subTask.title, uniqueId);
+      button.addEventListener('click', () => {
+        reload(subTask)
+      })
       taskContainer.appendChild(button);
-      taskContainer.innerHTML += modal(subTask, uniqueId);
     });
 
     collapseContainer.appendChild(taskContainer);
@@ -39,19 +41,25 @@ const getAllCategories = () => {
 };
 
 const getTask = obj => {
-  const container = it.is('button');
-  container.classes('d-flex flex-column w-100 my-2 px-2 ss-task-btn');
-  const h4 = it.is('h4');
-  h4.innerText = `Task name - ${obj.title}`;
-  const p = it.is('p');
-  p.innerText = `Due date -${obj.dueDate}`;
-  const priority = it.is('div');
-  priority.innerText = 'Priority - ' 
+  const taskButton = it.is('button');
+  taskButton.classes('d-flex flex-column w-100 my-2 px-2 ss-task-btn');
+  const header = it.is('div')
+  header.classes('w-100 d-flex justify-content-between')
+  const title = it.is('h4');
+  title.innerText = `Task name - ${obj.title}`;
+  const dueDate = it.is('p');
+  dueDate.innerText = `Due date -${(new Date(obj.dueDate)).toDateString()}`;
+  const priority = it.is('h5');
+  priority.classes('h5')
   for (let i = 0; i < parseInt(obj.priority, 10); i += 1) {
     priority.innerHTML += '&#x2605;';
   }
-  container.append(h4, p, priority);
-  return container;
+  header.append(title, priority)
+  taskButton.append(header, dueDate);
+  taskButton.addEventListener('click', () => {
+    reload(obj)
+  })
+  return taskButton;
 };
 
 const getUpcomingTasks = () => {

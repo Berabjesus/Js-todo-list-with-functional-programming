@@ -23,7 +23,6 @@ const getSortedTasksBydate = () => {
     return subObj
   }));
   let sum = [];
-  console.log(unsortedTasks);
 
   unsortedTasks.map(arr => {
     sum = sum.concat(arr);
