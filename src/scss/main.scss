@@ -182,6 +182,29 @@ body {
   }
 }
 
+.ss-task-container {
+  transition: all 0.07s linear;
+  .ss-action-container {
+    display: none;
+    .ss-action {
+      @include setBorder(1px, solid,black, '');
+      @include setMargin(3px);
+      &:hover {
+        @include setBorder(2px, solid,black);
+      }
+    }
+  }
+  &:hover {
+    @include setBorder(1px, solid, rgb(126, 121, 121), '');
+    @include setMargin(30px, '-bottom');
+    @include setPadding(10px, '-bottom')
+
+  }
+  &:hover .ss-action-container{
+    display: flex;
+  }
+}
+
 .ss-task-btn {
   transition: all 0.1s linear;
   @include setBorder(1px, solid, black, '');
@@ -201,4 +224,7 @@ body {
   right: 0;
   width: 25vw;
   border-left: unset;
+  .h5 {
+    @include customScrollBar();
+  }
 }

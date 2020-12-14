@@ -2,7 +2,7 @@
 
 import it from '../helpers/main_module';
 import { getAllTasksFromLocalStorage as getTasks, getSortedTasksBydate as sortedTasks } from '../Models/local_storage';
-import {reloadTaskDescription as reload} from '../helpers/reload';
+import {reloadTaskDescription as reload, editTask} from '../helpers/reload';
 
 const getCategories = () => {
   const mainContainer = it.is('div');
@@ -41,8 +41,10 @@ const getAllCategories = () => {
 };
 
 const getTask = obj => {
+  const container = it.is('div')
+  container.classes('ss-task-container mb-2')
   const taskButton = it.is('button');
-  taskButton.classes('d-flex flex-column w-100 my-2 px-2 ss-task-btn');
+  taskButton.classes('d-flex flex-column w-100 px-2 ss-task-btn');
   const header = it.is('div')
   header.classes('w-100 d-flex justify-content-between')
   const title = it.is('h4');
@@ -59,7 +61,18 @@ const getTask = obj => {
   taskButton.addEventListener('click', () => {
     reload(obj)
   })
-  return taskButton;
+  const taskAction = it.is('div');
+  taskAction.classes('ss-action-container');
+  const [editButton, deleteButton] = [it.is('button') , it.is('button')];
+  [editButton.innerText, deleteButton.innerText] = ['Edit', 'Delete']
+  editButton.classes('ss-action');
+  deleteButton.classes('ss-action');
+  editButton.addEventListener('click', () => {
+    editTask(obj)
+  })
+  taskAction.append(editButton, deleteButton)
+  container.append(taskButton, taskAction)
+  return container;
 };
 
 const getUpcomingTasks = () => {

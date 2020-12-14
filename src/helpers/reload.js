@@ -39,8 +39,8 @@ export const reloadTaskDescription = task => {
   header.classes('border-bottom border-dark pb-2')
   header.append(title, priority, dueDate)
 
-  const description = it.is('h5')
-  description.classes('pt-2')
+  const description = it.is('div')
+  description.classes('pt-2 h5 overflow-auto')
   description.innerText = task.description
   container.append(header, description)
 
@@ -49,4 +49,49 @@ export const reloadTaskDescription = task => {
     taskDescriptionTarget.lastElementChild;
   }
   taskDescriptionTarget.append(container)
+}
+
+export const editTask = task => {
+  const taskDescriptionTarget = document.getElementById('taskDescriptionContainer');
+  const selectTag = getKeys().map(option => {
+    const newOption = it.is('option');
+    newOption.innerText = option;
+    newOption.value = option;
+    return true;
+  });
+  taskDescriptionTarget.innerHTML = ''
+  taskDescriptionTarget.innerHTML = `<form class="px-2">
+  <div class="form-group">
+    <label for="Title">Task title</label>
+    <input type="text" class="form-control" id="Title" aria-describedby="Title" placeholder="Enter new category">
+  </div>
+  <div class="form-group">
+    <label for="Desc">Task Description</label>
+    <textarea class="form-control" name="Description" id="Desc" cols="30" rows="5" placeholder="Enter Description"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="Date">Task Due Date</label>
+    <input type="date" class="form-control" id="Date" aria-describedby="Date">
+  </div>
+  <div class="form-group">
+    <label for="Priority">Task Priority</label>
+    <select name="priority" class= "form-control" id="priority">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="taskCategories">Task Category</label>
+    <select name="categories" id="taskCategories" class="form-control">
+    ${
+      selectTag[0]
+    }
+    </select>
+  </div>
+  <button type="button" id= "Button" class="btn btn-dark text-white">Edit</button>
+  <p class="text-dark text-center" id="newTaskNotif"></p>
+</form>`
 }
