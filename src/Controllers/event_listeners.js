@@ -2,23 +2,21 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 
-import { setLocalStorageKey as setKey, setLocalStorage as store, getKeysFromLocalStorage as getKeys } from '../Models/local_storage';
+import { setLocalStorageKey as setKey, getKeysFromLocalStorage as getKeys } from '../Models/local_storage';
 import it from '../helpers/main_module';
-import * as reload from '../helpers/reload';
+import * as reload from './reload';
 import {getCategories as categories, getPastTasks as pastTasks, getUpcomingTasks as upcomingTasks } from './render_object';
 
 const idSelector = id => document.getElementById(id);
 
 const getValue = id => idSelector(id).value;
 
-const isEmpty = target => target.length === 0 || !target.trim();
-
 const addEventToCategoryModal = () => {
   const addEventToCategoryButtonInModal = idSelector('addCategoryButton');
   addEventToCategoryButtonInModal.onclick = function () {
     const value = getValue('newCategoryKey');
     const notif = idSelector('newCategoryKeyNotif');
-    isEmpty(value) ? (() => {
+    reload.isEmpty(value) ? (() => {
       notif.innerText = 'Empty Key is not allowed';
     })() : (() => {
       setKey(`${value}clock.me`);
@@ -30,29 +28,18 @@ const addEventToCategoryModal = () => {
 
 const addEventToNewTaskModal = () => {
   const addEventToNewTaskButton = idSelector('newTaskButton');
-
-  addEventToNewTaskButton.onclick = function () {
-    const newtaskObject = {
-      category: getValue('taskCategories'),
-      data: {
-        title: getValue('newTaskTitle'),
-        description: getValue('newTaskDesc'),
-        dueDate: getValue('newTaskDate'),
-        priority: getValue('newTaskpriority'),
-      },
-    };
-    const notif = idSelector('newTaskNotif');
-    isEmpty(newtaskObject.category) || Object.values(newtaskObject.data).some(value => isEmpty(value)) ? (() => {
-      notif.innerText = 'Fill all the fields';
-      return true;
-    })() : (() => {
-      store(newtaskObject);
-      notif.innerText = `${newtaskObject.data.title} is added`;
-      reload.reloadCategories(categories());
-      reload.reloadMain(upcomingTasks());
-      return true;
-    })();
+  const newtaskObject = {
+    category: getValue('taskCategories'),
+    data: {
+      title: getValue('newTaskTitle'),
+      description: getValue('newTaskDesc'),
+      dueDate: getValue('newTaskDate'),
+      priority: getValue('newTaskpriority'),
+    },
   };
+  addEventToNewTaskButton.onclick = function () {
+     reload.sharedEvent(newtaskObject, 'newTaskNotif')
+  }
 };
 
 const addSelectUpdaterEvent = () => {

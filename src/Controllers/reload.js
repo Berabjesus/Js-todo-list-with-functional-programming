@@ -1,6 +1,10 @@
 /* eslint-disable no-unused-expressions */
-import it from './main_module';
-import { getKeysFromLocalStorage as getKeys } from '../Models/local_storage';
+import it from '../helpers/main_module';
+import { getKeysFromLocalStorage as getKeys, setLocalStorage as store } from '../Models/local_storage';
+import {getCategories as categories, getUpcomingTasks as upcomingTasks } from './render_object';
+
+
+export const isEmpty = target => target.length === 0 || !target.trim();
 
 export const reloadCategories = container => {
   const categoryContainer = document.getElementById('categoryContainer');
@@ -55,7 +59,6 @@ export const reloadTaskDescription = (task, ...taskAction) => {
 }
 
 export const editTask = task => {
-  console.log(task);
   const taskDescriptionTarget = document.getElementById('taskDescriptionContainer');
   const selectTag = getKeys().map(option => {
     const newOption = it.is('option');
@@ -69,19 +72,19 @@ export const editTask = task => {
   taskDescriptionTarget.innerHTML = `<form class="px-2">
   <div class="form-group">
     <label for="Title">Task title</label>
-    <input type="text" class="form-control" id="Title" aria-describedby="Title" placeholder="Enter new category" value = "${task.title}">
+    <input type="text" class="form-control" id="editTitle" aria-Editdescribedby="Title" placeholder="Enter new category" value = "${task.title}">
   </div>
   <div class="form-group">
     <label for="Desc">Task Description</label>
-    <textarea class="form-control" name="Description" id="Desc" cols="30" rows="5" placeholder="Enter Description">${task.description}</textarea>
+    <textarea class="form-control" name="Description" id="editDesc" cols="Edit30" rows="5" placeholder="Enter Description">${task.description}</textarea>
   </div>
   <div class="form-group">
     <label for="Date">Task Due Date</label>
-    <input type="date" class="form-control" id="Date" aria-describedby="Date" value="${task.dueDate}">
+    <input type="date" class="form-control" id="editDate" aria-dEditescribedby="Date" value="${task.dueDate}">
   </div>
   <div class="form-group">
     <label for="Priority">Task Priority</label>
-    <select name="priority" class= "form-control" id="priority">
+    <select name="priority" class= "form-control" id="editpriority">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -91,13 +94,43 @@ export const editTask = task => {
   </div>
   <div class="form-group">
     <label for="taskCategories">Task Category</label>
-    <select name="categories" id="taskCategories" class="form-control">
+    <select name="categories" id="editTaskCategories" class="form-control">
     ${
       selectTag.map(tag => tag.outerHTML)
     }
     </select>
   </div>
-  <button type="button" id= "Button" class="btn btn-dark text-white" onclick= "editTaskEvent()">Edit</button>
-  <p class="text-dark text-center" id="newTaskNotif"></p>
-</form>`
+  <p class="text-dark text-center" id="editnewTaskNotif"></p>
+  </form>`
+  const button = it.is('button')
+  button.id = 'editButton'
+  button.classes("btn btn-dark text-white")
+  button.innerText = 'Edit';
+  button.addEventListener('click', () => {
+    const newtaskObject = {
+      category: document.getElementById('editTaskCategories').value,
+      data: {
+        title: document.getElementById('editTitle').value,
+        description: document.getElementById('editDesc').value,
+        dueDate: document.getElementById('editDate').value,
+        priority: document.getElementById('editpriority').value,
+      },
+    };
+    sharedEvent(newtaskObject, 'editnewTaskNotif')   
+  });
+  taskDescriptionTarget.appendChild(button)
 }
+
+export const sharedEvent = (obj, notifId) => {
+  const notif = document.getElementById(notifId);
+  isEmpty(obj.category) || Object.values(obj.data).some(value => isEmpty(value)) ? (() => {
+    notif.innerText = 'Fill all the fields';
+    return true;
+  })() : (() => {
+    store(obj);
+    notif.innerText = `${obj.data.title} is added`;
+    reloadCategories(categories());
+    reloadMain(upcomingTasks());
+    return true;
+  })();
+};

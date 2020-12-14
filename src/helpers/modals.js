@@ -72,4 +72,4 @@ const addTaskModal = (id) => `<div class="modal fade text-dark" id="${id}" tabin
   </div>
 </div>`;
 
-export {addCategoryModal, addTaskModal };
+export { addCategoryModal, addTaskModal };

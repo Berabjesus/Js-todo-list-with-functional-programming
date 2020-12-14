@@ -214,11 +214,11 @@ body {
 }
 
 .ss-task-btn {
+  background-color: white;
   transition: all 0.1s linear;
-  @include setBorder(1px, solid, black, '');
-
+  @include setBorder(3px, solid, black, '');
   &:hover {
-    @include setBorder(3px, solid, black, '');
+    @include setBorder(6px, solid, black, '');
     transform: scale(1.02);
     box-shadow: 1px 1px 40px rgb(185, 182, 182);
   }
