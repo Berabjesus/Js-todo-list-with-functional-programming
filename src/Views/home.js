@@ -59,7 +59,12 @@ const thirdSection = () => {
   const header = it.is('h2')
   header.innerText = 'Task Description'
   header.classes('border-bottom border-dark pb-3 text-center')
-  section.append(header)
+
+  const taskDescriptionContainer = it.is('div');
+  taskDescriptionContainer.classes('h-100')
+  taskDescriptionContainer.id = 'taskDescriptionContainer'
+
+  section.append(header,taskDescriptionContainer)
   return section
 }
 
