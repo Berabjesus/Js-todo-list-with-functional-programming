@@ -1,0 +1,282 @@
+@import "~bootstrap/scss/bootstrap";
+@import "./reset.scss";
+
+/*
+*   CSS TABLE OF CONTENTS
+*
+*   1. Variables and Mixins
+*   2. Globals
+      2.1 Globals - debug
+      2.2 Globals - display
+      2.3 Globals - border
+*   5. Sections
+*     5.1 first section
+      5.2 section one
+      5.3 section one
+      5.4 section one
+*/
+
+/*** 1. Variables and Mixins ***/
+$firstSectionTheme : #01060a;
+
+@mixin setBorder($width, $type, $color, $direction: "") {
+  border#{$direction}: $width $type $color;
+}
+
+@mixin setPadding($size, $direction: "") {
+  padding#{$direction}: $size;
+}
+
+@mixin setMargin($size, $direction: "") {
+  margin#{$direction}: $size;
+}
+
+@mixin flexProperty($direction, $justify, $align :flex-start) {
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin selfFlexProperty($self) {
+  align-self: $self;
+}
+
+@mixin customScrollBar() {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f8f8f8;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #333;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+@mixin customButtonProperties() {
+  @include setBorder(3px, solid, white);
+
+  background-color: $firstSectionTheme;
+
+  &:hover {
+    color: black;
+    background-color: white;
+  }
+}
+
+@mixin ssFolderProp {
+  @include setBorder(1px, solid, black, '');
+
+  border-bottom: unset;
+  box-shadow: 1px -15px 10px rgb(238, 230, 230);
+}
+
+/*** 2. Globals ***/
+
+/*** 2.1 Globals - debug ***/
+.custom-border {
+  @include setBorder(3px, dashed, red, '');
+}
+
+/*** 2.2 Globals - display ***/
+.modal-content {
+  @include setBorder(1px, solid, black);
+
+  box-shadow: 2px 1px 10px rgb(92, 91, 91);
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.add-btn {
+  @include customButtonProperties();
+  @include setPadding(0);
+  @include selfFlexProperty(center);
+
+  background-color: $firstSectionTheme;
+  border-radius: 50%;
+  width: 65px;
+  font-size: 40px;
+}
+
+.task-btn {
+  @include customButtonProperties();
+
+  color: white;
+  font-size: 25px;
+}
+
+.subtasks-btn {
+  font-size: 20px;
+  border-width: 1px;
+}
+
+.modal-dialog {
+  z-index: 1050;
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+/*** 5. Sections ***/
+body {
+  @include customScrollBar();
+}
+
+/*** 5.1 first section ***/
+.first-section {
+  @include customScrollBar();
+  @include setPadding(50px, -bottom);
+
+  position: relative;
+  background-color: $firstSectionTheme;
+  overflow-y: auto;
+  overflow-x: unset;
+
+  h2,
+  h3 {
+    @include setBorder(3px, solid, white, '-bottom');
+
+    text-align: center;
+  }
+
+  h3 {
+    border: unset;
+  }
+}
+
+.task-container {
+  @include setBorder(1px, dashed, white);
+  @include setPadding(10px);
+}
+
+.fs-action {
+  background-color: $firstSectionTheme;
+  border-radius: 5px;
+  color: white;
+
+  &:hover {
+    color: black;
+    background-color: white;
+  }
+}
+
+/*** 5.2 second section ***/
+.second-section {
+  @include customScrollBar();
+  @include setBorder(1px, solid, black);
+
+  box-shadow: 1px 1px 30px rgba(49, 49, 49, 0.493) inset;
+  border-left: unset;
+  overflow-y: auto;
+}
+
+.second-section-content {
+  @include setPadding(100px, '-bottom');
+}
+
+.new-task-btn {
+  position: fixed;
+  bottom: 0;
+  left: 40%;
+  font-weight: 900;
+}
+
+.ss-nav-link {
+  @include setBorder(1px, solid,black, '');
+  @include setPadding(10px);
+
+  border-radius: 10px;
+  display: block;
+  font-size: 20px;
+
+  &:hover {
+    transform: scale(1.08);
+  }
+}
+
+.ss-task-container {
+  position: relative;
+
+  @include ssFolderProp();
+
+  transform-origin: right;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    @include setMargin(30px, '-bottom');
+    @include setPadding(10px, '-bottom');
+
+    transform: rotateZ(2deg);
+  }
+
+  .folder {
+    @include ssFolderProp();
+
+    position: absolute;
+    top: -19px;
+    right: -1px;
+    width: 85px;
+    height: 20px;
+    background-color: white;
+  }
+
+  .ss-action-container {
+    display: none;
+
+    .ss-action {
+      @include setBorder(1px, solid,black, '');
+      @include setMargin(3px);
+
+      &:hover {
+        @include setBorder(2px, solid,black);
+      }
+    }
+  }
+
+  &:hover .ss-action-container {
+    display: flex;
+  }
+}
+
+.ss-task-btn {
+  background-color: white;
+  transition: all 0.1s linear;
+
+  &:hover {
+    @include setBorder(2px, dotted, black, '');
+
+    transform: scale(1.02);
+    box-shadow: 1px 1px 20px rgb(218, 206, 206);
+  }
+}
+
+/*** 5.3 third section ***/
+
+.third-section {
+  position: fixed;
+  z-index: 1050;
+  right: 0;
+  width: 33.3vw;
+
+  .h5 {
+    @include customScrollBar();
+  }
+}
+
+.ts-action-container {
+  button {
+    @include setBorder(1px, solid,black, '');
+    @include setMargin(3px);
+
+    display: block;
+  }
+}
