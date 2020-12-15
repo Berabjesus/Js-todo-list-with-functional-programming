@@ -12,9 +12,6 @@ const getAllTasksFromLocalStorage = () => {
       category: key,
       data: JSON.parse(localStorage.getItem(`${key}clock.me`)),
     };
-    obj.data.map((arr,i) => {
-      arr.id = i
-    })
     return obj;
   });
   return arrayOfFilteredTasks;
@@ -37,21 +34,55 @@ const getSortedTasksBydate = () => {
   return { pastTasks, upcomingTasks };
 };
 
-const setLocalStorage = (object, edit = false, remove = false) => {
+const setLocalStorage = (object, edit = null, remove = false) => {
   const newArr = [object.data];
   const category = `${object.category}clock.me`;
   getKeysFromLocalStorage().some(key => key === object.category) ? (() => {
     const originalData = JSON.parse(localStorage.getItem(category));
+    let newData = []
     if (edit) {
-      console.log(originalData);
-      // .data[object.id]
+      // let duplicate = []
+      // if (edit.category !== object.category) {
+      //   duplicate = JSON.parse(localStorage.getItem(edit.category+'clock.me'));
+      // } else {
+      //   duplicate = [...originalData]
+      // }
+      let duplicate = [...originalData]
+      duplicate.splice(object.data.id, 1)
+      newData = duplicate.concat(newArr);
+      console.log(newData);
+
+    } else if(remove) {
+      const toDelete = JSON.parse(localStorage.getItem(category))
+      let id;
+      object.id !== undefined ? id = object.id : id = object.data.id;
+
+      toDelete.splice(id, 1)
+      newData = toDelete;
     }
-    const newData = originalData.concat(newArr);
-    localStorage.setItem(category, JSON.stringify(newData));
+    else {
+       newData = originalData.concat(newArr);
+    }
+    const newDataWithId =  keyMap(newData)
+    set(category, newDataWithId)
   })() : (() => {
-    localStorage.setItem(category, JSON.stringify(newArr));
+    set(category, newArr)
   })();
 };
+
+// const 
+
+const keyMap = arr => {
+  const newArr =  arr.map((key, i) => {
+    key.id = i
+    return key
+  })
+  return newArr
+}
+
+const set = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
+}
 
 export {
   getAllTasksFromLocalStorage, setLocalStorage, getKeysFromLocalStorage, setLocalStorageKey, getSortedTasksBydate,

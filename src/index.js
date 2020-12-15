@@ -22,3 +22,11 @@ events.addNavButtonEvents();
 // let bool = data
 // // // console.log(data);
 // console.log(bool);
+// let f = {
+//   t:'ad'
+// }
+// let b = f.data
+// let c = 1
+
+// let d = b || c
+// console.log(f.data);

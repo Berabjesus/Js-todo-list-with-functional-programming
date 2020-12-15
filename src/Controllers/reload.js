@@ -4,7 +4,7 @@ import { getKeysFromLocalStorage as getKeys, setLocalStorage as store } from '..
 import {getCategories as categories, getUpcomingTasks as upcomingTasks } from './render_object';
 
 
-export const isEmpty = target => target.length === 0 || !target.trim();
+export const isEmpty = target => target.length === 0 || !(target.toString()).trim();
 
 export const reloadCategories = container => {
   const categoryContainer = document.getElementById('categoryContainer');
@@ -24,8 +24,14 @@ export const reloadMain = container => {
   secondSection.appendChild(container);
 };
 
-export const reloadTaskDescription = (task, ...taskAction) => {
+export const reloadTaskDescription = task => {
   const taskDescriptionTarget = document.getElementById('taskDescriptionContainer');
+  while (taskDescriptionTarget.lastElementChild) {
+    taskDescriptionTarget.removeChild(taskDescriptionTarget.lastElementChild);
+    taskDescriptionTarget.lastElementChild;
+  }
+  if (!task)
+    return true
   const container = it.is('div')
   container.classes('d-flex flex-column px-2')
   const header = it.is('div')
@@ -51,10 +57,7 @@ export const reloadTaskDescription = (task, ...taskAction) => {
   description.innerText = task.description
   container.append(header, description)
 
-  while (taskDescriptionTarget.lastElementChild) {
-    taskDescriptionTarget.removeChild(taskDescriptionTarget.lastElementChild);
-    taskDescriptionTarget.lastElementChild;
-  }
+
   taskDescriptionTarget.append(container)
 }
 
@@ -114,26 +117,31 @@ export const editTask = task => {
         description: document.getElementById('editDesc').value,
         dueDate: document.getElementById('editDate').value,
         priority: document.getElementById('editpriority').value,
+        id: task.id
       },
     };
-    sharedEvent(newtaskObject, 'editnewTaskNotif', true)
-    task.category !== newtaskObject.category ? deleteTask(task) : false
+    sharedEvent(newtaskObject, 'editnewTaskNotif', task)
+    if (task.category !== newtaskObject.category) {
+      // deleteTask(task)
+    }
+    reloadTaskDescription(null)
   });
   taskDescriptionTarget.appendChild(button)
 }
 
 export const deleteTask = obj => {
-  store(obj,false,true)
-  // console.log('asdasd1123');
+  store(obj,null,true)
+  reloadCategories(categories());
+  reloadMain(upcomingTasks());
 }
 
-export const sharedEvent = (obj, notifId, bool = false) => {
+export const sharedEvent = (obj, notifId, edit = null) => {
   const notif = document.getElementById(notifId);
   isEmpty(obj.category) || Object.values(obj.data).some(value => isEmpty(value)) ? (() => {
     notif.innerText = 'Fill all the fields';
     return true;
   })() : (() => {
-    bool ? store(obj, true) : store(obj);
+    edit ? store(obj, edit) : store(obj);
     notif.innerText = `${obj.data.title} is added`;
     reloadCategories(categories());
     reloadMain(upcomingTasks());

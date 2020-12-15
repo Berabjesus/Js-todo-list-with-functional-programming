@@ -165,7 +165,7 @@ body {
 .second-section {
   @include customScrollBar();
   @include setBorder(1px, solid, black);
-  box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.493) inset;
+  box-shadow: 1px 1px 30px rgba(49, 49, 49, 0.493) inset;
   border-left: unset;
   overflow-y: auto;
 }
@@ -175,7 +175,7 @@ body {
 }
 
 .new-task-btn {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 40%;
   font-weight: 900;
