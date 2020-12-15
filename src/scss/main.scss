@@ -171,14 +171,13 @@ body {
 .second-section {
   @include customScrollBar();
   @include setBorder(1px, solid, black);
-  @include setPadding(100px, '-bottom');
   box-shadow: 1px 1px 30px rgba(49, 49, 49, 0.493) inset;
   border-left: unset;
   overflow-y: auto;
 }
 
 .second-section-content {
-  @include setPadding(10px, '-bottom');
+  @include setPadding(100px, '-bottom');
 }
 
 .new-task-btn {
@@ -203,7 +202,7 @@ body {
   position: relative;
   @include ssFolderProp();
   transform-origin: right;
-  transition: all 0.1s linear;
+  transition: all 0.1s ease-in-out;
   &:hover {
     @include setMargin(30px, '-bottom');
     @include setPadding(10px, '-bottom');

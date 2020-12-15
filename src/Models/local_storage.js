@@ -87,6 +87,17 @@ const editTask = (newObject, oldObject) => {
   })() : false
 }
 
+const deleteTask = obj => {
+  const category = `${obj.category}clock.me`;
+  checkKeyExistance(obj.category) ? (() => {
+    const originalData = getAll(category);
+    originalData.splice(obj.id, 1)
+    const newData = originalData
+    const newDataWithId =  keyMap(newData)
+    setAll(category, newDataWithId)
+  })() : false
+}
+
 export {
-  getAllTasks, addTask, getKeys, setKey, getSortedTasksBydate, editTask
+  getAllTasks, addTask, getKeys, setKey, getSortedTasksBydate, editTask,deleteTask
 };

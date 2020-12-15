@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import it from '../helpers/main_module';
-import { getKeys, addTask as store, editTask as edit } from '../Models/local_storage';
+import { getKeys, addTask as store, editTask as edit, deleteTask as remove } from '../Models/local_storage';
 import {getCategories as categories, getUpcomingTasks as upcomingTasks } from './render_object';
 
 
@@ -121,18 +121,16 @@ export const editTask = task => {
       },
     };
     sharedEvent(newtaskObject, 'editnewTaskNotif', task)
-    if (task.category !== newtaskObject.category) {
-      // deleteTask(task)
-    }
     reloadTaskDescription(null)
   });
   taskDescriptionTarget.appendChild(button)
 }
 
 export const deleteTask = obj => {
-  store(obj,null,true)
+  remove(obj)
   reloadCategories(categories());
   reloadMain(upcomingTasks());
+  reloadTaskDescription(null)
 }
 
 export const sharedEvent = (obj, notifId, oldObj = null) => {
