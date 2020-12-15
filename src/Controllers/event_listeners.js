@@ -19,7 +19,7 @@ const addEventToCategoryModal = () => {
     reload.isEmpty(value) ? (() => {
       notif.innerText = 'Empty Key is not allowed';
     })() : (() => {
-      setKey(`${value}clock.me`);
+      setKey(value);
       reload.reloadCategories(categories());
       notif.innerText = `${value} is added to the categories`;
     })();

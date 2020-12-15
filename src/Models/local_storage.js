@@ -1,13 +1,15 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
 
+
 const getKeys = () => ((Object.keys(localStorage)).filter(key => key.includes('clock.me'))).map(key => key.replace('clock.me', ''));
+
 
 const checkKeyExistance = objKey => {
   return getKeys().some(key => key === objKey)
 }
 
-const setKey = newKey => localStorage.setItem(newKey, '[]');
+const setKey = newKey => localStorage.setItem(newKey+"clock.me", '[]');
 
 const setAll = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
@@ -26,6 +28,11 @@ const keyMap = arr => {
 }
 
 const getAllTasks = () => {
+  (() => {
+    if (getKeys().length === 0) {
+      setKey('Personal')
+    }
+  })();
   const appSpecificKeys = getKeys();
   const arrayOfFilteredTasks = appSpecificKeys.map(key => {
     const obj = {
