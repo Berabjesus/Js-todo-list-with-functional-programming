@@ -1,36 +1,30 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
 
-
 const getKeys = () => ((Object.keys(localStorage)).filter(key => key.includes('clock.me'))).map(key => key.replace('clock.me', ''));
 
+const checkKeyExistance = objKey => getKeys().some(key => key === objKey);
 
-const checkKeyExistance = objKey => {
-  return getKeys().some(key => key === objKey)
-}
-
-const setKey = newKey => localStorage.setItem(newKey+"clock.me", '[]');
+const setKey = newKey => localStorage.setItem(`${newKey}clock.me`, '[]');
 
 const setAll = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
-}
+};
 
-const getAll = key => {
-  return JSON.parse(localStorage.getItem(key))
-}
+const getAll = key => JSON.parse(localStorage.getItem(key));
 
 const keyMap = arr => {
-  const newArr =  arr.map((key, i) => {
-    key.id = i
-    return key
-  })
-  return newArr
-}
+  const newArr = arr.map((key, i) => {
+    key.id = i;
+    return key;
+  });
+  return newArr;
+};
 
 const getAllTasks = () => {
   (() => {
     if (getKeys().length === 0) {
-      setKey('Personal')
+      setKey('Personal');
     }
   })();
   const appSpecificKeys = getKeys();
@@ -45,9 +39,9 @@ const getAllTasks = () => {
 };
 
 const getSortedTasksBydate = () => {
-  const unsortedTasks = getAllTasks().map(obj => obj.data.map(subObj =>{
-    subObj.category = obj.category
-    return subObj
+  const unsortedTasks = getAllTasks().map(obj => obj.data.map(subObj => {
+    subObj.category = obj.category;
+    return subObj;
   }));
   let sum = [];
 
@@ -67,10 +61,10 @@ const addTask = (object) => {
   checkKeyExistance(object.category) ? (() => {
     const originalData = getAll(category);
     const newData = originalData.concat(newArr);
-    const newDataWithId =  keyMap(newData)
-    setAll(category, newDataWithId)
+    const newDataWithId = keyMap(newData);
+    setAll(category, newDataWithId);
   })() : (() => {
-    setAll(category, newArr)
+    setAll(category, newArr);
   })();
 };
 
@@ -80,31 +74,31 @@ const editTask = (newObject, oldObject) => {
   checkKeyExistance(newObject.category) ? (() => {
     if (newObject.category === oldObject.category) {
       const originalData = getAll(category);
-      originalData.splice(newObject.data.id, 1)
-      const newData = originalData.concat(newArr);  
-      const newDataWithId =  keyMap(newData)
-      setAll(category, newDataWithId)
+      originalData.splice(newObject.data.id, 1);
+      const newData = originalData.concat(newArr);
+      const newDataWithId = keyMap(newData);
+      setAll(category, newDataWithId);
     } else {
-      const oldCategoryData = getAll(oldObject.category+"clock.me");
-      oldCategoryData.splice(oldObject.id, 1)
-      const oldData = oldCategoryData
-      setAll(oldObject.category+"clock.me", oldData)
-      addTask(newObject)
+      const oldCategoryData = getAll(`${oldObject.category}clock.me`);
+      oldCategoryData.splice(oldObject.id, 1);
+      const oldData = oldCategoryData;
+      setAll(`${oldObject.category}clock.me`, oldData);
+      addTask(newObject);
     }
-  })() : false
-}
+  })() : false;
+};
 
 const deleteTask = obj => {
   const category = `${obj.category}clock.me`;
   checkKeyExistance(obj.category) ? (() => {
     const originalData = getAll(category);
-    originalData.splice(obj.id, 1)
-    const newData = originalData
-    const newDataWithId =  keyMap(newData)
-    setAll(category, newDataWithId)
-  })() : false
-}
+    originalData.splice(obj.id, 1);
+    const newData = originalData;
+    const newDataWithId = keyMap(newData);
+    setAll(category, newDataWithId);
+  })() : false;
+};
 
 export {
-  getAllTasks, addTask, getKeys, setKey, getSortedTasksBydate, editTask,deleteTask
+  getAllTasks, addTask, getKeys, setKey, getSortedTasksBydate, editTask, deleteTask,
 };

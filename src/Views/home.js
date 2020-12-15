@@ -43,7 +43,7 @@ const secondSection = () => {
   nav.append(upcoming, past);
 
   const content = it.is('div');
-  content.classes('second-section-content mt-2')
+  content.classes('second-section-content mt-2');
   content.id = 'secondSection';
   content.append(upcomingTasks());
 
@@ -54,19 +54,19 @@ const secondSection = () => {
 };
 
 const thirdSection = () => {
-  const section = it.is('section')
+  const section = it.is('section');
   section.classes('d-flex flex-column text-dark h-100vh pt-5 px-2 border border-dark border-left-0 third-section');
-  const header = it.is('h2')
-  header.innerText = 'Task Description'
-  header.classes('border-bottom border-dark pb-3 text-center')
+  const header = it.is('h2');
+  header.innerText = 'Task Description';
+  header.classes('border-bottom border-dark pb-3 text-center');
 
   const taskDescriptionContainer = it.is('div');
-  taskDescriptionContainer.classes('h-100')
-  taskDescriptionContainer.id = 'taskDescriptionContainer'
+  taskDescriptionContainer.classes('h-100');
+  taskDescriptionContainer.id = 'taskDescriptionContainer';
 
-  section.append(header,taskDescriptionContainer)
-  return section
-}
+  section.append(header, taskDescriptionContainer);
+  return section;
+};
 
 const home = () => ({
   firstSection, secondSection, thirdSection,

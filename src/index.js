@@ -8,7 +8,7 @@ import * as events from './Controllers/event_listeners';
 
 const body = document.getElementsByTagName('body')[0];
 const main = module.mainContainer();
-main.append(home.firstSection(), home.secondSection(),home.thirdSection());
+main.append(home.firstSection(), home.secondSection(), home.thirdSection());
 body.prepend(main);
 
 events.addEventToCategoryModal();

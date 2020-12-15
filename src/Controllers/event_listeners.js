@@ -5,7 +5,7 @@
 import { setKey, getKeys } from '../Models/local_storage';
 import it from '../helpers/main_module';
 import * as reload from './reload';
-import {getCategories as categories, getPastTasks as pastTasks, getUpcomingTasks as upcomingTasks } from './render_object';
+import { getCategories as categories, getPastTasks as pastTasks, getUpcomingTasks as upcomingTasks } from './render_object';
 
 const idSelector = id => document.getElementById(id);
 
@@ -38,8 +38,8 @@ const addEventToNewTaskModal = () => {
         priority: getValue('newTaskpriority'),
       },
     };
-     reload.sharedEvent(newtaskObject, 'newTaskNotif')
-  }
+    reload.sharedEvent(newtaskObject, 'newTaskNotif');
+  };
 };
 
 const addSelectUpdaterEvent = () => {
@@ -69,5 +69,5 @@ const addNavButtonEvents = () => {
 };
 
 export {
-  addEventToCategoryModal, addEventToNewTaskModal, addSelectUpdaterEvent, addNavButtonEvents
+  addEventToCategoryModal, addEventToNewTaskModal, addSelectUpdaterEvent, addNavButtonEvents,
 };

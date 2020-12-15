@@ -72,10 +72,11 @@ $firstSectionTheme : #01060a;
 
 @mixin ssFolderProp {
   @include setBorder(1px, solid, black, '');
+
   border-bottom: unset;
   box-shadow: 1px -15px 10px rgb(238, 230, 230);
-  
-} 
+}
+
 /*** 2. Globals ***/
 
 /*** 2.1 Globals - debug ***/
@@ -155,12 +156,13 @@ body {
 .task-container {
   @include setBorder(1px, dashed, white);
   @include setPadding(10px);
-
 }
+
 .fs-action {
   background-color: $firstSectionTheme;
   border-radius: 5px;
   color: white;
+
   &:hover {
     color: black;
     background-color: white;
@@ -171,6 +173,7 @@ body {
 .second-section {
   @include customScrollBar();
   @include setBorder(1px, solid, black);
+
   box-shadow: 1px 1px 30px rgba(49, 49, 49, 0.493) inset;
   border-left: unset;
   overflow-y: auto;
@@ -190,9 +193,11 @@ body {
 .ss-nav-link {
   @include setBorder(1px, solid,black, '');
   @include setPadding(10px);
+
   border-radius: 10px;
   display: block;
   font-size: 20px;
+
   &:hover {
     transform: scale(1.08);
   }
@@ -200,16 +205,22 @@ body {
 
 .ss-task-container {
   position: relative;
+
   @include ssFolderProp();
+
   transform-origin: right;
   transition: all 0.1s ease-in-out;
+
   &:hover {
     @include setMargin(30px, '-bottom');
     @include setPadding(10px, '-bottom');
+
     transform: rotateZ(2deg);
   }
+
   .folder {
     @include ssFolderProp();
+
     position: absolute;
     top: -19px;
     right: -1px;
@@ -217,17 +228,21 @@ body {
     height: 20px;
     background-color: white;
   }
+
   .ss-action-container {
     display: none;
+
     .ss-action {
       @include setBorder(1px, solid,black, '');
       @include setMargin(3px);
+
       &:hover {
         @include setBorder(2px, solid,black);
       }
     }
   }
-  &:hover .ss-action-container{
+
+  &:hover .ss-action-container {
     display: flex;
   }
 }
@@ -235,8 +250,10 @@ body {
 .ss-task-btn {
   background-color: white;
   transition: all 0.1s linear;
+
   &:hover {
     @include setBorder(2px, dotted, black, '');
+
     transform: scale(1.02);
     box-shadow: 1px 1px 20px rgb(218, 206, 206);
   }
@@ -249,6 +266,7 @@ body {
   z-index: 1050;
   right: 0;
   width: 33.3vw;
+
   .h5 {
     @include customScrollBar();
   }
@@ -258,6 +276,7 @@ body {
   button {
     @include setBorder(1px, solid,black, '');
     @include setMargin(3px);
+
     display: block;
   }
 }

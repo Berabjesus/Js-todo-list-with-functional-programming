@@ -11,7 +11,7 @@ const mainModule = (() => {
   };
   const is = type => {
     const element = document.createElement(type);
-    element.cloneNode(true)
+    element.cloneNode(true);
     define(element);
     return element;
   };

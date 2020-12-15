@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-expressions */
+/* eslint-disable import/no-cycle */
 import it from '../helpers/main_module';
-import { getKeys, addTask as store, editTask as edit, deleteTask as remove } from '../Models/local_storage';
-import {getCategories as categories, getUpcomingTasks as upcomingTasks } from './render_object';
-
+import {
+  getKeys, addTask as store, editTask as edit, deleteTask as remove,
+} from '../Models/local_storage';
+import { getCategories as categories, getUpcomingTasks as upcomingTasks } from './render_object';
 
 export const isEmpty = target => target.length === 0 || !(target.toString()).trim();
 
@@ -30,36 +32,49 @@ export const reloadTaskDescription = task => {
     taskDescriptionTarget.removeChild(taskDescriptionTarget.lastElementChild);
     taskDescriptionTarget.lastElementChild;
   }
-  if (!task)
-    return true
-  const container = it.is('div')
-  container.classes('d-flex flex-column px-2')
-  const header = it.is('div')
-  header.classes('w-100 d-flex flex-column justify-content-between')
+  if (!task) return true;
+  const container = it.is('div');
+  container.classes('d-flex flex-column px-2');
+  const header = it.is('div');
+  header.classes('w-100 d-flex flex-column justify-content-between');
   const title = it.is('h3');
-  title.classes('mb-2')
+  title.classes('mb-2');
   title.innerText = task.title;
   const dueDate = it.is('p');
-  dueDate.innerText = "Due date - " + task.dueDate 
-  const category = it.is('h5')
-  category.innerText = "Category - " + task.category
+  dueDate.innerText = `Due date - ${task.dueDate}`;
+  const category = it.is('h5');
+  category.innerText = `Category - ${task.category}`;
   const priority = it.is('h5');
-  priority.classes('h5 mt-2')
-  priority.innerText = 'Priority - '
+  priority.classes('h5 mt-2');
+  priority.innerText = 'Priority - ';
   for (let i = 0; i < parseInt(task.priority, 10); i += 1) {
     priority.innerHTML += '&#x2605;';
   }
-  header.classes('border-bottom border-dark pb-2')
-  header.append(title,category, priority, dueDate)
+  header.classes('border-bottom border-dark pb-2');
+  header.append(title, category, priority, dueDate);
 
-  const description = it.is('div')
-  description.classes('pt-2 h5 overflow-auto')
-  description.innerText = task.description
-  container.append(header, description)
+  const description = it.is('div');
+  description.classes('pt-2 h5 overflow-auto');
+  description.innerText = task.description;
+  container.append(header, description);
 
+  taskDescriptionTarget.append(container);
+  return true;
+};
 
-  taskDescriptionTarget.append(container)
-}
+export const sharedEvent = (obj, notifId, oldObj = null) => {
+  const notif = document.getElementById(notifId);
+  isEmpty(obj.category) || Object.values(obj.data).some(value => isEmpty(value)) ? (() => {
+    notif.innerText = 'Fill all the fields';
+    return true;
+  })() : (() => {
+    oldObj ? edit(obj, oldObj) : store(obj);
+    notif.innerText = `${obj.data.title} is added`;
+    reloadCategories(categories());
+    reloadMain(upcomingTasks());
+    return true;
+  })();
+};
 
 export const editTask = task => {
   const taskDescriptionTarget = document.getElementById('taskDescriptionContainer');
@@ -67,11 +82,10 @@ export const editTask = task => {
     const newOption = it.is('option');
     newOption.innerText = option;
     newOption.value = option;
-    if (task.category === option)
-      newOption.setAttribute('selected', 'selected') 
+    if (task.category === option) newOption.setAttribute('selected', 'selected');
     return newOption;
   });
-  taskDescriptionTarget.innerHTML = ''
+  taskDescriptionTarget.innerHTML = '';
   taskDescriptionTarget.innerHTML = `<form class="px-2">
   <div class="form-group">
     <label for="Title">Task title</label>
@@ -99,15 +113,15 @@ export const editTask = task => {
     <label for="taskCategories">Task Category</label>
     <select name="categories" id="editTaskCategories" class="form-control">
     ${
-      selectTag.map(tag => tag.outerHTML)
-    }
+  selectTag.map(tag => tag.outerHTML)
+}
     </select>
   </div>
   <p class="text-dark text-center" id="editnewTaskNotif"></p>
-  </form>`
-  const button = it.is('button')
-  button.id = 'editButton'
-  button.classes("btn btn-dark text-white")
+  </form>`;
+  const button = it.is('button');
+  button.id = 'editButton';
+  button.classes('btn btn-dark text-white');
   button.innerText = 'Edit';
   button.addEventListener('click', () => {
     const newtaskObject = {
@@ -117,32 +131,18 @@ export const editTask = task => {
         description: document.getElementById('editDesc').value,
         dueDate: document.getElementById('editDate').value,
         priority: document.getElementById('editpriority').value,
-        id: task.id
+        id: task.id,
       },
     };
-    sharedEvent(newtaskObject, 'editnewTaskNotif', task)
-    reloadTaskDescription(null)
+    sharedEvent(newtaskObject, 'editnewTaskNotif', task);
+    reloadTaskDescription(null);
   });
-  taskDescriptionTarget.appendChild(button)
-}
+  taskDescriptionTarget.appendChild(button);
+};
 
 export const deleteTask = obj => {
-  remove(obj)
+  remove(obj);
   reloadCategories(categories());
   reloadMain(upcomingTasks());
-  reloadTaskDescription(null)
-}
-
-export const sharedEvent = (obj, notifId, oldObj = null) => {
-  const notif = document.getElementById(notifId);
-  isEmpty(obj.category) || Object.values(obj.data).some(value => isEmpty(value)) ? (() => {
-    notif.innerText = 'Fill all the fields';
-    return true;
-  })() : (() => {
-    oldObj ? edit(obj, oldObj) : store(obj);
-    notif.innerText = `${obj.data.title} is added`;
-    reloadCategories(categories());
-    reloadMain(upcomingTasks());
-    return true;
-  })();
+  reloadTaskDescription(null);
 };
