@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[Clock.me Live Demo](https://raw.githack.com/Berabjesus/Js-todo-list-with-functional-programming/working-branch/dist/index.html)
+[Clock.me Live Demo]()
 
 # ScreenShots
 ### Home Page

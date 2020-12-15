@@ -59,7 +59,7 @@ const getAllCategories = () => {
 
 const getTask = obj => {
   const container = it.is('div')
-  container.classes('ss-task-container mb-2')
+  container.classes('ss-task-container mb-3')
   const taskButton = it.is('button');
   const folder = it.is('div')
   folder.classes("folder")
