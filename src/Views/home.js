@@ -26,7 +26,7 @@ const secondSection = () => {
   const task = it.is('div');
   task.classes('col-md-12 pt-5 d-flex flex-column');
   const nav = it.is('nav');
-  nav.classes('d-flex justify-content-center border-bottom border-dark w-100 px-4 pb-3 ');
+  nav.classes('d-flex justify-content-center border-bottom border-dark w-100 px-4 pb-3 mb-3');
   const link = (text, id) => {
     const newLink = it.is('a');
     newLink.innerText = text;
@@ -55,7 +55,7 @@ const secondSection = () => {
 
 const thirdSection = () => {
   const section = it.is('section')
-  section.classes('d-flex flex-column text-dark h-100vh pt-5 border border-dark border-left-0 third-section');
+  section.classes('d-flex flex-column text-dark h-100vh pt-5 px-2 border border-dark border-left-0 third-section');
   const header = it.is('h2')
   header.innerText = 'Task Description'
   header.classes('border-bottom border-dark pb-3 text-center')

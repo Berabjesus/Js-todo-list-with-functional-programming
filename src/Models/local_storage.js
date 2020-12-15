@@ -72,7 +72,6 @@ const editTask = (newObject, oldObject) => {
   const category = `${newObject.category}clock.me`;
   checkKeyExistance(newObject.category) ? (() => {
     if (newObject.category === oldObject.category) {
-      console.log('test 1');
       const originalData = getAll(category);
       originalData.splice(newObject.data.id, 1)
       const newData = originalData.concat(newArr);  

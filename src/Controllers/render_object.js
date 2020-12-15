@@ -61,6 +61,8 @@ const getTask = obj => {
   const container = it.is('div')
   container.classes('ss-task-container mb-2')
   const taskButton = it.is('button');
+  const folder = it.is('div')
+  folder.classes("folder")
   taskButton.classes('d-flex flex-column w-100 px-2 ss-task-btn');
   const header = it.is('div')
   header.classes('w-100 d-flex justify-content-between')
@@ -93,7 +95,7 @@ const getTask = obj => {
   taskButton.addEventListener('click', () => {
     reload(obj)
   })
-  container.append(taskButton, taskAction)
+  container.append(folder, taskButton, taskAction)
   return container;
 };
 

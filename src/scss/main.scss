@@ -165,13 +165,14 @@ body {
 .second-section {
   @include customScrollBar();
   @include setBorder(1px, solid, black);
+  @include setPadding(100px, '-bottom');
   box-shadow: 1px 1px 30px rgba(49, 49, 49, 0.493) inset;
   border-left: unset;
   overflow-y: auto;
 }
 
 .second-section-content {
-  @include setPadding(120px, '-bottom');
+  @include setPadding(10px, '-bottom');
 }
 
 .new-task-btn {
@@ -193,6 +194,10 @@ body {
 }
 
 .ss-task-container {
+  position: relative;
+  @include setBorder(1px, solid, black, '');
+  border-bottom: unset;
+  box-shadow: 1px -15px 10px rgb(238, 230, 230);
   transition: all 0.07s linear;
   .ss-action-container {
     display: none;
@@ -205,7 +210,7 @@ body {
     }
   }
   &:hover {
-    @include setBorder(1px, solid, rgb(126, 121, 121), '');
+    // @include setBorder(3px, solid, black, '-bottom');
     @include setMargin(30px, '-bottom');
     @include setPadding(10px, '-bottom')
 
@@ -213,16 +218,26 @@ body {
   &:hover .ss-action-container{
     display: flex;
   }
+
+  .folder {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    width: 70px;
+    height: 20px;
+    background-color: white;
+    border: 2px dashed red;
+  }
 }
 
 .ss-task-btn {
   background-color: white;
   transition: all 0.1s linear;
-  @include setBorder(3px, solid, black, '');
+  // @include setBorder(3px, solid, black, '');
   &:hover {
-    @include setBorder(6px, solid, black, '');
-    transform: scale(1.02);
-    box-shadow: 1px 1px 40px rgb(185, 182, 182);
+    // @include setBorder(6px, solid, black, '');
+    // transform: scale(1.02);
+    // box-shadow: 1px 1px 40px rgb(185, 182, 182);
   }
 }
 
