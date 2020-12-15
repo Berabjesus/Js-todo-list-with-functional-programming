@@ -1,16 +1,36 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
 
-const getKeysFromLocalStorage = () => ((Object.keys(localStorage)).filter(key => key.includes('clock.me'))).map(key => key.replace('clock.me', ''));
+const getKeys = () => ((Object.keys(localStorage)).filter(key => key.includes('clock.me'))).map(key => key.replace('clock.me', ''));
 
-const setLocalStorageKey = newKey => localStorage.setItem(newKey, '[]');
+const checkKeyExistance = objKey => {
+  return getKeys().some(key => key === objKey)
+}
 
-const getAllTasksFromLocalStorage = () => {
-  const appSpecificKeys = getKeysFromLocalStorage();
+const setKey = newKey => localStorage.setItem(newKey, '[]');
+
+const setAll = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+const getAll = key => {
+  return JSON.parse(localStorage.getItem(key))
+}
+
+const keyMap = arr => {
+  const newArr =  arr.map((key, i) => {
+    key.id = i
+    return key
+  })
+  return newArr
+}
+
+const getAllTasks = () => {
+  const appSpecificKeys = getKeys();
   const arrayOfFilteredTasks = appSpecificKeys.map(key => {
     const obj = {
       category: key,
-      data: JSON.parse(localStorage.getItem(`${key}clock.me`)),
+      data: getAll(`${key}clock.me`),
     };
     return obj;
   });
@@ -18,7 +38,7 @@ const getAllTasksFromLocalStorage = () => {
 };
 
 const getSortedTasksBydate = () => {
-  const unsortedTasks = getAllTasksFromLocalStorage().map(obj => obj.data.map(subObj =>{
+  const unsortedTasks = getAllTasks().map(obj => obj.data.map(subObj =>{
     subObj.category = obj.category
     return subObj
   }));
@@ -34,60 +54,40 @@ const getSortedTasksBydate = () => {
   return { pastTasks, upcomingTasks };
 };
 
-const setLocalStorage = (object) => {
+const addTask = (object) => {
   const newArr = [object.data];
   const category = `${object.category}clock.me`;
   checkKeyExistance(object.category) ? (() => {
-    const originalData = JSON.parse(localStorage.getItem(category));
+    const originalData = getAll(category);
     const newData = originalData.concat(newArr);
     const newDataWithId =  keyMap(newData)
-    set(category, newDataWithId)
+    setAll(category, newDataWithId)
   })() : (() => {
-    set(category, newArr)
+    setAll(category, newArr)
   })();
 };
 
-const editLocalStorage = (newObject, oldObject) => {
+const editTask = (newObject, oldObject) => {
   const newArr = [newObject.data];
   const category = `${newObject.category}clock.me`;
   checkKeyExistance(newObject.category) ? (() => {
     if (newObject.category === oldObject.category) {
-      const originalData = JSON.parse(localStorage.getItem(category));
+      console.log('test 1');
+      const originalData = getAll(category);
       originalData.splice(newObject.data.id, 1)
       const newData = originalData.concat(newArr);  
       const newDataWithId =  keyMap(newData)
-      set(category, newDataWithId)
+      setAll(category, newDataWithId)
     } else {
-      const oldCategoryData = JSON.parse(localStorage.getItem(oldObject.category+"clock.me"));
+      const oldCategoryData = getAll(oldObject.category+"clock.me");
       oldCategoryData.splice(oldObject.id, 1)
       const oldData = oldCategoryData
-      set(category, oldData)
-      const newCategoryData = JSON.parse(localStorage.getItem(oldObject.category+"clock.me"));
-      newCategoryData.splice(newObject.data.id, 1)
-      const newData = newCategoryData.concat(newArr);  
-      const newDataWithId =  keyMap(newData)
-      set(category, newDataWithId)
+      setAll(oldObject.category+"clock.me", oldData)
+      addTask(newObject)
     }
-
   })() : false
 }
 
-const keyMap = arr => {
-  const newArr =  arr.map((key, i) => {
-    key.id = i
-    return key
-  })
-  return newArr
-}
-
-const set = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value));
-}
-
-const checkKeyExistance = objKey => {
-  return getKeysFromLocalStorage().some(key => key === objKey)
-}
-
 export {
-  getAllTasksFromLocalStorage, setLocalStorage, getKeysFromLocalStorage, setLocalStorageKey, getSortedTasksBydate, editLocalStorage
+  getAllTasks, addTask, getKeys, setKey, getSortedTasksBydate, editTask
 };

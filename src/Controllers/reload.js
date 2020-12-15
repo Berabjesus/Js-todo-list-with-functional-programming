@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import it from '../helpers/main_module';
-import { getKeysFromLocalStorage as getKeys, setLocalStorage as store, editLocalStorage as edit } from '../Models/local_storage';
+import { getKeys, addTask as store, editTask as edit } from '../Models/local_storage';
 import {getCategories as categories, getUpcomingTasks as upcomingTasks } from './render_object';
 
 

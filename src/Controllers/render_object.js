@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 
 import it from '../helpers/main_module';
-import { getAllTasksFromLocalStorage as getTasks, getSortedTasksBydate as sortedTasks } from '../Models/local_storage';
+import { getAllTasks as getTasks, getSortedTasksBydate as sortedTasks } from '../Models/local_storage';
 import {reloadTaskDescription as reload, editTask, deleteTask} from './reload';
 
 const getCategories = () => {

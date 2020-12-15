@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable max-len */
 
-import { setLocalStorageKey as setKey, getKeysFromLocalStorage as getKeys } from '../Models/local_storage';
+import { setKey, getKeys } from '../Models/local_storage';
 import it from '../helpers/main_module';
 import * as reload from './reload';
 import {getCategories as categories, getPastTasks as pastTasks, getUpcomingTasks as upcomingTasks } from './render_object';
