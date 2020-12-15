@@ -70,6 +70,12 @@ $firstSectionTheme : #01060a;
   }
 }
 
+@mixin ssFolderProp {
+  @include setBorder(1px, solid, black, '');
+  border-bottom: unset;
+  box-shadow: 1px -15px 10px rgb(238, 230, 230);
+  
+} 
 /*** 2. Globals ***/
 
 /*** 2.1 Globals - debug ***/
@@ -195,10 +201,23 @@ body {
 
 .ss-task-container {
   position: relative;
-  @include setBorder(1px, solid, black, '');
-  border-bottom: unset;
-  box-shadow: 1px -15px 10px rgb(238, 230, 230);
-  transition: all 0.07s linear;
+  @include ssFolderProp();
+  transform-origin: right;
+  transition: all 0.1s linear;
+  &:hover {
+    @include setMargin(30px, '-bottom');
+    @include setPadding(10px, '-bottom');
+    transform: rotateZ(2deg);
+  }
+  .folder {
+    @include ssFolderProp();
+    position: absolute;
+    top: -19px;
+    right: -1px;
+    width: 85px;
+    height: 20px;
+    background-color: white;
+  }
   .ss-action-container {
     display: none;
     .ss-action {
@@ -209,35 +228,18 @@ body {
       }
     }
   }
-  &:hover {
-    // @include setBorder(3px, solid, black, '-bottom');
-    @include setMargin(30px, '-bottom');
-    @include setPadding(10px, '-bottom')
-
-  }
   &:hover .ss-action-container{
     display: flex;
-  }
-
-  .folder {
-    position: absolute;
-    top: -20px;
-    right: 0;
-    width: 70px;
-    height: 20px;
-    background-color: white;
-    border: 2px dashed red;
   }
 }
 
 .ss-task-btn {
   background-color: white;
   transition: all 0.1s linear;
-  // @include setBorder(3px, solid, black, '');
   &:hover {
-    // @include setBorder(6px, solid, black, '');
-    // transform: scale(1.02);
-    // box-shadow: 1px 1px 40px rgb(185, 182, 182);
+    @include setBorder(2px, dotted, black, '');
+    transform: scale(1.02);
+    box-shadow: 1px 1px 20px rgb(218, 206, 206);
   }
 }
 
