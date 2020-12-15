@@ -1,5 +1,5 @@
 # Clock.me Todo list application
-> This is a javascript project made to create a todo list application by dynamically rendering it using JavaScript DOM manipulation and local storage. JavaScript is used to generate the entire contents of the website. 
+> This is a javascript project made to create a todo list application by dynamically rendering it using JavaScript DOM manipulation and local storage. JavaScript is used to generate the entire contents of the website. A user can create, edit and delete tasks.
 
 ## Built With
 
@@ -18,7 +18,7 @@
 
 # ScreenShots
 ### Home Page
-<img src="./public/ss.JPG" width="auto" height="auto" />
+<img src="./public/ss2.JPG" width="auto" height="auto" />
 
 ### Prerequisites
 - Web browser
