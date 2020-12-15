@@ -34,35 +34,12 @@ const getSortedTasksBydate = () => {
   return { pastTasks, upcomingTasks };
 };
 
-const setLocalStorage = (object, edit = null, remove = false) => {
+const setLocalStorage = (object) => {
   const newArr = [object.data];
   const category = `${object.category}clock.me`;
-  getKeysFromLocalStorage().some(key => key === object.category) ? (() => {
+  checkKeyExistance(object.category) ? (() => {
     const originalData = JSON.parse(localStorage.getItem(category));
-    let newData = []
-    if (edit) {
-      // let duplicate = []
-      // if (edit.category !== object.category) {
-      //   duplicate = JSON.parse(localStorage.getItem(edit.category+'clock.me'));
-      // } else {
-      //   duplicate = [...originalData]
-      // }
-      let duplicate = [...originalData]
-      duplicate.splice(object.data.id, 1)
-      newData = duplicate.concat(newArr);
-      console.log(newData);
-
-    } else if(remove) {
-      const toDelete = JSON.parse(localStorage.getItem(category))
-      let id;
-      object.id !== undefined ? id = object.id : id = object.data.id;
-
-      toDelete.splice(id, 1)
-      newData = toDelete;
-    }
-    else {
-       newData = originalData.concat(newArr);
-    }
+    const newData = originalData.concat(newArr);
     const newDataWithId =  keyMap(newData)
     set(category, newDataWithId)
   })() : (() => {
@@ -70,7 +47,30 @@ const setLocalStorage = (object, edit = null, remove = false) => {
   })();
 };
 
-// const 
+const editLocalStorage = (newObject, oldObject) => {
+  const newArr = [newObject.data];
+  const category = `${newObject.category}clock.me`;
+  checkKeyExistance(newObject.category) ? (() => {
+    if (newObject.category === oldObject.category) {
+      const originalData = JSON.parse(localStorage.getItem(category));
+      originalData.splice(newObject.data.id, 1)
+      const newData = originalData.concat(newArr);  
+      const newDataWithId =  keyMap(newData)
+      set(category, newDataWithId)
+    } else {
+      const oldCategoryData = JSON.parse(localStorage.getItem(oldObject.category+"clock.me"));
+      oldCategoryData.splice(oldObject.id, 1)
+      const oldData = oldCategoryData
+      set(category, oldData)
+      const newCategoryData = JSON.parse(localStorage.getItem(oldObject.category+"clock.me"));
+      newCategoryData.splice(newObject.data.id, 1)
+      const newData = newCategoryData.concat(newArr);  
+      const newDataWithId =  keyMap(newData)
+      set(category, newDataWithId)
+    }
+
+  })() : false
+}
 
 const keyMap = arr => {
   const newArr =  arr.map((key, i) => {
@@ -84,6 +84,10 @@ const set = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
+const checkKeyExistance = objKey => {
+  return getKeysFromLocalStorage().some(key => key === objKey)
+}
+
 export {
-  getAllTasksFromLocalStorage, setLocalStorage, getKeysFromLocalStorage, setLocalStorageKey, getSortedTasksBydate,
+  getAllTasksFromLocalStorage, setLocalStorage, getKeysFromLocalStorage, setLocalStorageKey, getSortedTasksBydate, editLocalStorage
 };

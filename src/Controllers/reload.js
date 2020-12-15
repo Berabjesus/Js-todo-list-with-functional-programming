@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import it from '../helpers/main_module';
-import { getKeysFromLocalStorage as getKeys, setLocalStorage as store } from '../Models/local_storage';
+import { getKeysFromLocalStorage as getKeys, setLocalStorage as store, editLocalStorage as edit } from '../Models/local_storage';
 import {getCategories as categories, getUpcomingTasks as upcomingTasks } from './render_object';
 
 
@@ -135,13 +135,13 @@ export const deleteTask = obj => {
   reloadMain(upcomingTasks());
 }
 
-export const sharedEvent = (obj, notifId, edit = null) => {
+export const sharedEvent = (obj, notifId, oldObj = null) => {
   const notif = document.getElementById(notifId);
   isEmpty(obj.category) || Object.values(obj.data).some(value => isEmpty(value)) ? (() => {
     notif.innerText = 'Fill all the fields';
     return true;
   })() : (() => {
-    edit ? store(obj, edit) : store(obj);
+    oldObj ? edit(obj, oldObj) : store(obj);
     notif.innerText = `${obj.data.title} is added`;
     reloadCategories(categories());
     reloadMain(upcomingTasks());
