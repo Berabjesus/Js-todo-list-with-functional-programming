@@ -59,7 +59,7 @@ const addSelectUpdaterEvent = () => {
 
 const addNavButtonEvents = () => {
   const upcoming = document.getElementById('upcomingTasks');
-  const upcomingNumber = document.getElementById('upcomingTaskNumber');
+  const upcomingNumber = document.querySelector('.upcoming-number');
   upcomingNumber.style.display = 'block'
   upcoming.append(upcomingNumber)
   const past = document.getElementById('pastTasks');

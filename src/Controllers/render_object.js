@@ -104,7 +104,7 @@ const getUpcomingTasks = () => {
   const container = it.is('div');
   const upcomingTasks = sortedTasks().upcomingTasks()
   const amount= it.is('small')
-  amount.id = "upcomingTaskNumber"
+  amount.classes("task-number upcoming-number")
   amount.innerText = upcomingTasks.length
   amount.style.display = "none"
   upcomingTasks.map(obj => {
