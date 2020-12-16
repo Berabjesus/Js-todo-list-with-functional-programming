@@ -116,7 +116,7 @@ const getPastTasks = () => {
   const container = it.is('div');
   const pastTasks = sortedTasks().pastTasks()
   const amount= getTaskAmount(pastTasks.length)
-  amount.classes(' past-number')
+  amount.classes('past-number')
   pastTasks.map(obj => {
     container.appendChild(getTask(obj));
   });
