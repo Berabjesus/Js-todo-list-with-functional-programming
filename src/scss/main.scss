@@ -193,7 +193,7 @@ body {
 .ss-nav-link {
   @include setBorder(1px, solid,black, '');
   @include setPadding(10px);
-  position: relative;
+
   border-radius: 10px;
   display: block;
   font-size: 20px;
