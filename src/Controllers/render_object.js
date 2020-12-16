@@ -102,7 +102,8 @@ const getTask = obj => {
 
 const getUpcomingTasks = () => {
   const container = it.is('div');
-  sortedTasks().upcomingTasks().map(obj => {
+  const upcomingTasks = sortedTasks().upcomingTasks();
+  upcomingTasks.map(obj => {
     container.appendChild(getTask(obj));
   });
   return container;
@@ -110,7 +111,8 @@ const getUpcomingTasks = () => {
 
 const getPastTasks = () => {
   const container = it.is('div');
-  sortedTasks().pastTasks().map(obj => {
+  const pastTasks = sortedTasks().pastTasks();
+  pastTasks.map(obj => {
     container.appendChild(getTask(obj));
   });
   return container;
