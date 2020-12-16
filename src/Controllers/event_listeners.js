@@ -64,9 +64,9 @@ const addNavButtonEvents = () => {
   upcoming.append(upcomingNumber)
 
   const past = document.getElementById('pastTasks');
-  const pastNumber = document.querySelector('.past-number');
-  pastNumber.style.display = 'block'
-  past.append(pastNumber)
+  // const pastNumber = document.querySelector('.past-number');
+  // pastNumber.style.display = 'block'
+  // past.append(pastNumber)
   upcoming.addEventListener('click', () => {
     reload.reloadMain(upcomingTasks());
   });

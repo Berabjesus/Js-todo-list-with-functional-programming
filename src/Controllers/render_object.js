@@ -121,6 +121,8 @@ const getPastTasks = () => {
     container.appendChild(getTask(obj));
   });
   container.appendChild(amount)
+  console.log(container);
+  
   return container;
 };
 
