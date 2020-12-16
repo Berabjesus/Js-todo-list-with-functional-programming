@@ -100,6 +100,14 @@ const getTask = obj => {
   return container;
 };
 
+const getTaskAmount = number => {
+  const amount = it.is('small');
+  amount.classes('task-number');
+  amount.innerText = number;
+  amount.style.display = 'none';
+  return amount;
+};
+
 const getUpcomingTasks = () => {
   const container = it.is('div');
   const upcomingTasks = sortedTasks().upcomingTasks();
@@ -124,14 +132,6 @@ const getPastTasks = () => {
   console.log(container);
 
   return container;
-};
-
-const getTaskAmount = number => {
-  const amount = it.is('small');
-  amount.classes('task-number');
-  amount.innerText = number;
-  amount.style.display = 'none';
-  return amount;
 };
 
 export {
