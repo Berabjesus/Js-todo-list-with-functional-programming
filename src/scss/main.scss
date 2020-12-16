@@ -193,7 +193,7 @@ body {
 .ss-nav-link {
   @include setBorder(1px, solid,black, '');
   @include setPadding(10px);
-
+  position: relative;
   border-radius: 10px;
   display: block;
   font-size: 20px;
@@ -201,6 +201,19 @@ body {
   &:hover {
     transform: scale(1.08);
   }
+}
+
+.task-number {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  background-color: $firstSectionTheme;
+  color: white;
+  border-radius: 50%;
+  width: 25px;
+  line-height: 25px;
+  font-size: 24px;
+  text-align: center;
 }
 
 .ss-task-container {

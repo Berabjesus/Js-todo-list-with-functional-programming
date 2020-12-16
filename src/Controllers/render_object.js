@@ -100,27 +100,12 @@ const getTask = obj => {
   return container;
 };
 
-const getTaskAmount = number => {
-  const amount = it.is('small');
-  amount.classes('task-number');
-  amount.innerText = number;
-  amount.style.display = 'none';
-  return amount;
-};
-
 const getUpcomingTasks = () => {
   const container = it.is('div');
   const upcomingTasks = sortedTasks().upcomingTasks();
-  const upcomingAmount = getTaskAmount(upcomingTasks.length);
-  const pastAmount = getTaskAmount(sortedTasks().pastTasks().length);
-  upcomingAmount.classes(' upcoming-number');
-  pastAmount.classes('past-number')
   upcomingTasks.map(obj => {
     container.appendChild(getTask(obj));
   });
-  console.log(pastAmount);
-  container.append(upcomingAmount, pastAmount);
-  console.log(container);
   return container;
 };
 
