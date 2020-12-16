@@ -106,9 +106,11 @@ const getUpcomingTasks = () => {
   const amount= it.is('small')
   amount.id = "upcomingTaskNumber"
   amount.innerText = upcomingTasks.length
+  amount.style.display = "none"
   upcomingTasks.map(obj => {
     container.appendChild(getTask(obj));
   });
+  container.appendChild(amount)
   return container;
 };
 

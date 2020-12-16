@@ -59,6 +59,9 @@ const addSelectUpdaterEvent = () => {
 
 const addNavButtonEvents = () => {
   const upcoming = document.getElementById('upcomingTasks');
+  const upcomingNumber = document.getElementById('upcomingTaskNumber');
+  upcomingNumber.style.display = 'block'
+  upcoming.append(upcomingNumber)
   const past = document.getElementById('pastTasks');
   upcoming.addEventListener('click', () => {
     reload.reloadMain(upcomingTasks());
