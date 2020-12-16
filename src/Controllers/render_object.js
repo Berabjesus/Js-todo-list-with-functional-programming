@@ -102,37 +102,37 @@ const getTask = obj => {
 
 const getUpcomingTasks = () => {
   const container = it.is('div');
-  const upcomingTasks = sortedTasks().upcomingTasks()
-  const amount= getTaskAmount(upcomingTasks.length)
-  amount.classes(' upcoming-number')
+  const upcomingTasks = sortedTasks().upcomingTasks();
+  const amount = getTaskAmount(upcomingTasks.length);
+  amount.classes(' upcoming-number');
   upcomingTasks.map(obj => {
     container.appendChild(getTask(obj));
   });
-  container.appendChild(amount)
+  container.appendChild(amount);
   return container;
 };
 
 const getPastTasks = () => {
   const container = it.is('div');
-  const pastTasks = sortedTasks().pastTasks()
-  const amount= getTaskAmount(pastTasks.length)
-  amount.classes('past-number')
+  const pastTasks = sortedTasks().pastTasks();
+  const amount = getTaskAmount(pastTasks.length);
+  amount.classes('past-number');
   pastTasks.map(obj => {
     container.appendChild(getTask(obj));
   });
-  container.appendChild(amount)
+  container.appendChild(amount);
   console.log(container);
-  
+
   return container;
 };
 
 const getTaskAmount = number => {
-  const amount= it.is('small')
-  amount.classes("task-number")
-  amount.innerText = number
-  amount.style.display = "none"
-  return amount
-}
+  const amount = it.is('small');
+  amount.classes('task-number');
+  amount.innerText = number;
+  amount.style.display = 'none';
+  return amount;
+};
 
 export {
   getAllCategories, getCategories, getUpcomingTasks, getPastTasks,
