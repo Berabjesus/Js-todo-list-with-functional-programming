@@ -102,7 +102,11 @@ const getTask = obj => {
 
 const getUpcomingTasks = () => {
   const container = it.is('div');
-  sortedTasks().upcomingTasks().map(obj => {
+  const upcomingTasks = sortedTasks().upcomingTasks()
+  const amount= it.is('small')
+  amount.id = "upcomingTaskNumber"
+  amount.innerText = upcomingTasks.length
+  upcomingTasks.map(obj => {
     container.appendChild(getTask(obj));
   });
   return container;
