@@ -60,10 +60,12 @@ const addSelectUpdaterEvent = () => {
 const addNavButtonEvents = () => {
   const upcoming = document.getElementById('upcomingTasks');
   const upcomingNumber = document.querySelector('.upcoming-number');
-  upcomingNumber.style.display = 'block';
-  upcoming.append(upcomingNumber);
-
+  upcomingNumber.style.display = 'block'
+  upcoming.append(upcomingNumber)
   const past = document.getElementById('pastTasks');
+  const pastNumber = document.querySelector('.past-number');
+  pastNumber.style.display = 'block'
+  past.append(pastNumber)
   upcoming.addEventListener('click', () => {
     reload.reloadMain(upcomingTasks());
   });

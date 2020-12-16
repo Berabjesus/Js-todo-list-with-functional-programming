@@ -111,26 +111,25 @@ const getTaskAmount = number => {
 const getUpcomingTasks = () => {
   const container = it.is('div');
   const upcomingTasks = sortedTasks().upcomingTasks();
-  const amount = getTaskAmount(upcomingTasks.length);
-  amount.classes(' upcoming-number');
+  const upcomingAmount = getTaskAmount(upcomingTasks.length);
+  const pastAmount = getTaskAmount(sortedTasks().pastTasks().length);
+  upcomingAmount.classes(' upcoming-number');
+  pastAmount.classes('past-number')
   upcomingTasks.map(obj => {
     container.appendChild(getTask(obj));
   });
-  container.appendChild(amount);
+  console.log(pastAmount);
+  container.append(upcomingAmount, pastAmount);
+  console.log(container);
   return container;
 };
 
 const getPastTasks = () => {
   const container = it.is('div');
   const pastTasks = sortedTasks().pastTasks();
-  const amount = getTaskAmount(pastTasks.length);
-  amount.classes('past-number');
   pastTasks.map(obj => {
     container.appendChild(getTask(obj));
   });
-  container.appendChild(amount);
-  console.log(container);
-
   return container;
 };
 
