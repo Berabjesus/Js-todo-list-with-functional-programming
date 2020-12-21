@@ -54,5 +54,10 @@ describe('local storage getAllTasks', () => {
     addTask(newtaskObject)
     expect(getAllTasks().length > 0 && getAllTasks().some(task => task.category === newtaskObject.category))
   });
+});
 
+describe('local storage getSortedTasksBydate', () => {
+  it('should return two objects named pastTasks and upcomingTasks', () => {
+    expect(Object.keys(getSortedTasksBydate()).length == 2 && Object.keys(getSortedTasksBydate()).some(key => key === 'pastTasks' || key === 'upcomingTasks')).toBeTruthy()
+  });
 });
