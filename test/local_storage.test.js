@@ -43,3 +43,16 @@ describe('local storage addTask', () => {
     expect(JSON.parse(value)[0]).toEqual(newtaskObject.data)
   });
 });
+
+describe('local storage getAllTasks', () => {
+  it('should set a new key name personal if the local storage is empty', () => {
+    getAllTasks()
+    expect(getKeys().length > 0 && getKeys().some(key => key === 'Personal'))
+  });
+
+  it('should fire the JSON.parse() command on every local storage key value pair and return an array with atleast one object of category name personal', () => {
+    addTask(newtaskObject)
+    expect(getAllTasks().length > 0 && getAllTasks().some(task => task.category === newtaskObject.category))
+  });
+
+});
