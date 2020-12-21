@@ -12,5 +12,13 @@ describe('local storage setKey', () => {
 });
 
 describe('local storage getKeys', () => {
-  console.log(Object.keys(localStorage));
+  setKey(testKey);
+  it('should filter keys that have clock.me and return an array of key with clock.me removed ', () => {
+    expect(getKeys() instanceof Array).toBeTruthy()
+  });
+
+  it('should have a key named test with jest', () => {
+    const keys =  getKeys()
+    expect(keys.some(key => key === testKey))
+  });
 });
