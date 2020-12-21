@@ -28,14 +28,14 @@ describe('local storage getKeys', () => {
 
   it('should have a key named test with jest', () => {
     const keys =  getKeys()
-    expect(keys.some(key => key === testKey))
+    expect(keys.some(key => key === testKey)).toBeTruthy()
   });
 });
 
 describe('local storage addTask', () => {
   it(`should store a new object by a category name of ${newtaskObject.category}`, () => {
     addTask(newtaskObject)
-    expect(getKeys().length > 0 && getKeys().some(key => key === newtaskObject.category))
+    expect(getKeys().length > 0 && getKeys().some(key => key === newtaskObject.category)).toBeTruthy()
   });
 
   it('should store object values of newtaskObject', () => {
@@ -46,13 +46,12 @@ describe('local storage addTask', () => {
 
 describe('local storage getAllTasks', () => {
   it('should set a new key name personal if the local storage is empty', () => {
-    getAllTasks()
-    expect(getKeys().length > 0 && getKeys().some(key => key === 'Personal'))
+    expect(getKeys().length > 0 && getKeys().some(key => key === 'personal')).toBeTruthy()
   });
 
   it('should fire the JSON.parse() command on every local storage key value pair and return an array with atleast one object of category name personal', () => {
     addTask(newtaskObject)
-    expect(getAllTasks().length > 0 && getAllTasks().some(task => task.category === newtaskObject.category))
+    expect(getAllTasks().length > 0 && getAllTasks().some(task => task.category === newtaskObject.category)).toBeTruthy()
   });
 });
 
@@ -65,6 +64,6 @@ describe('local storage getSortedTasksBydate', () => {
 describe('local storage deletetask', () => {
   it('should delete the task object from local storage', () => {
     deleteTask(newtaskObject)
-    expect(getAllTasks().some(obj => obj.data !== 'personal title'))
+    expect(getAllTasks().some(obj => obj.data !== 'personal title')).toBeTruthy()
   });
 });
