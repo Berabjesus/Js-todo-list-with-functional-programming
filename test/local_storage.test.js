@@ -3,6 +3,15 @@ import {
 } from '../src/Models/local_storage'
 
 const testKey = 'test with jest'
+const newtaskObject = {
+  category: 'personal',
+  data: {
+    title: 'personal title',
+    description: 'personal description ',
+    dueDate: '01/01/2020',
+    priority: 'personal priority',
+  }
+}
 
 describe('local storage setKey', () => {
   it('should set a key that has value a value with clock.me extension', () => {
@@ -20,5 +29,17 @@ describe('local storage getKeys', () => {
   it('should have a key named test with jest', () => {
     const keys =  getKeys()
     expect(keys.some(key => key === testKey))
+  });
+});
+
+describe('local storage addTask', () => {
+  it(`should store a new object by a category name of ${newtaskObject.category}`, () => {
+    addTask(newtaskObject)
+    expect(getKeys().length > 0 && getKeys().some(key => key === newtaskObject.category))
+  });
+
+  it('should store object values of newtaskObject', () => {
+    const value = localStorage.getItem(newtaskObject.category+'clock.me')
+    expect(JSON.parse(value)[0]).toEqual(newtaskObject.data)
   });
 });
