@@ -21,3 +21,14 @@ describe('secondSection function', () => {
     expect(upcomingTasks.classList.contains('ss-nav-link') && upcomingTasks.classList.contains('ss-nav-link')).toBeTruthy()
   });
 });
+
+describe('thirdSection function', () => {
+  const thirdSection = home.thirdSection()
+  it('Should return an HTML section tag with a class name of third-section', ()=> {
+    expect(thirdSection.nodeName === 'SECTION' && thirdSection.getAttribute('class')).toBe('d-flex flex-column text-dark h-100vh pt-5 px-2 border border-dark border-left-0 third-section')
+  })
+
+  it('should have task description container child with taskDescriptionContainer id', () => {
+    expect(thirdSection.querySelector('#taskDescriptionContainer') != null).toBeTruthy()
+  });
+})
