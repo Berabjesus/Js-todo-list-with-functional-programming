@@ -1,9 +1,9 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable import/no-cycle */
 
-import it from '../helpers/main_module';
+import it from './main_module';
 import { getAllTasks as getTasks, getSortedTasksBydate as sortedTasks } from '../Models/local_storage';
-import { reloadTaskDescription as reload, editTask, deleteTask } from './reload';
+import { reloadTaskDescription as reload, editTask, deleteTask } from '../Controllers/reload';
 
 const getCategories = () => {
   const mainContainer = it.is('div');

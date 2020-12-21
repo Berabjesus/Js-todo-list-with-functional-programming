@@ -1,5 +1,5 @@
 import it from '../helpers/main_module';
-import { getAllCategories as tasks, getUpcomingTasks as upcomingTasks } from '../Controllers/render_object';
+import { getAllCategories as tasks, getUpcomingTasks as upcomingTasks } from '../helpers/render_object';
 
 const firstSection = () => {
   const section = it.is('section');
