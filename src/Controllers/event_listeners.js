@@ -13,6 +13,7 @@ const getValue = id => idSelector(id).value;
 
 const addEventToCategoryModal = () => {
   const addEventToCategoryButtonInModal = idSelector('addCategoryButton');
+  addEventToCategoryButtonInModal.setAttribute('click-event', 'true')
   addEventToCategoryButtonInModal.onclick = function () {
     const value = getValue('newCategoryKey');
     const notif = idSelector('newCategoryKeyNotif');
@@ -20,7 +21,7 @@ const addEventToCategoryModal = () => {
       notif.innerText = 'Empty Key is not allowed';
     })() : (() => {
       setKey(value);
-      reload.reloadCategories(categories());
+      reload.reloadCategories(cateagories());
       notif.innerText = `${value} is added to the categories`;
     })();
   };
@@ -28,6 +29,7 @@ const addEventToCategoryModal = () => {
 
 const addEventToNewTaskModal = () => {
   const addEventToNewTaskButton = idSelector('newTaskButton');
+  addEventToNewTaskButton.setAttribute('click-event', 'true')
   addEventToNewTaskButton.onclick = function () {
     const newtaskObject = {
       category: getValue('taskCategories'),
@@ -44,6 +46,7 @@ const addEventToNewTaskModal = () => {
 
 const addSelectUpdaterEvent = () => {
   const button = document.getElementById('middleSectionAddButton');
+  button.setAttribute('click-event', 'true')
   button.addEventListener('click', () => {
     const categoriesInNewTaskModal = document.getElementById('taskCategories');
     categoriesInNewTaskModal.innerHTML = '';
@@ -60,6 +63,8 @@ const addSelectUpdaterEvent = () => {
 const addNavButtonEvents = () => {
   const upcoming = document.getElementById('upcomingTasks');
   const past = document.getElementById('pastTasks');
+  upcoming.setAttribute('click-event', 'true')
+  past.setAttribute('click-event', 'true')
   upcoming.addEventListener('click', () => {
     reload.reloadMain(upcomingTasks());
   });
