@@ -7,7 +7,8 @@
     "dev": "webpack --mode development",
     "build": "webpack --progress -p",
     "start": "webpack-dev-server --open",
-    "watch": "webpack --progress --watch --mode=development"
+    "watch": "webpack --progress --watch --mode=development",
+    "test" : "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "exports-loader": "^0.6.4",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.6.3",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.10",
     "precss": "^3.0.0",
