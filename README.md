@@ -34,6 +34,9 @@
   - Run `npm run start` to open it on a live server. NB The port is set to 3000. Go the webpack.config file to change it 
 - Else
   - Just Go to the dist folder and open index.html
+## Testing
+- Go to the root directory
+- Open a CLI tool and type `npm run test`
 
 ## Author
 
