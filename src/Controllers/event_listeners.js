@@ -21,15 +21,15 @@ const addCategory = () => {
     reload.reloadCategories(categories());
     notif.innerText = `${value} is added to the categories`;
   })();
-}
+};
 
 const addEventToCategoryModal = () => {
   const addEventToCategoryButtonInModal = idSelector('addCategoryButton');
   addEventToCategoryButtonInModal.setAttribute('click-event', 'true');
-  addEventToCategoryButtonInModal.onclick = addCategory
+  addEventToCategoryButtonInModal.onclick = addCategory;
 };
 
-const addTask= () => {
+const addTask = () => {
   const newtaskObject = {
     category: getValue('taskCategories'),
     data: {
@@ -40,14 +40,13 @@ const addTask= () => {
     },
   };
   reload.sharedEvent(newtaskObject, 'newTaskNotif');
-}
+};
 
 const addEventToNewTaskModal = () => {
   const addEventToNewTaskButton = idSelector('newTaskButton');
   addEventToNewTaskButton.setAttribute('click-event', 'true');
   addEventToNewTaskButton.onclick = addTask;
 };
-
 
 const updateSelect = () => {
   const categoriesInNewTaskModal = document.getElementById('taskCategories');
@@ -59,21 +58,21 @@ const updateSelect = () => {
     categoriesInNewTaskModal.appendChild(newOption);
     return true;
   });
-}
+};
 
 const addSelectUpdaterEvent = () => {
   const button = document.getElementById('middleSectionAddButton');
   button.setAttribute('click-event', 'true');
-  button.addEventListener('click', updateSelect)
+  button.addEventListener('click', updateSelect);
 };
 
 const upcomingEvent = () => {
   reload.reloadMain(upcomingTasks());
-}
+};
 
 const pastEvent = () => {
   reload.reloadMain(pastTasks());
-}
+};
 
 const addNavButtonEvents = () => {
   const upcoming = document.getElementById('upcomingTasks');
@@ -85,5 +84,5 @@ const addNavButtonEvents = () => {
 };
 
 export {
-  addEventToCategoryModal, addEventToNewTaskModal, addSelectUpdaterEvent, addNavButtonEvents, addCategory,addTask,updateSelect, upcomingEvent, pastEvent
+  addEventToCategoryModal, addEventToNewTaskModal, addSelectUpdaterEvent, addNavButtonEvents, addCategory, addTask, updateSelect, upcomingEvent, pastEvent,
 };
