@@ -1,5 +1,5 @@
-# Clock.me Todo list application
-> This is a javascript project made to create a todo list application by dynamically rendering it using JavaScript DOM manipulation and local storage. JavaScript is used to generate the entire contents of the website. A user can create, edit and delete tasks.
+# Clock.me Todo list application with TDD and Functional Programming
+> This is a javascript project made to create a todo list application by dynamically rendering it using JavaScript DOM manipulation and local storage. JavaScript is used to generate the entire contents of the website. A user can create, edit and delete tasks. Jest is used to perform test driven development.
 
 ## Built With
 
@@ -8,6 +8,7 @@
 - CSS
 - ES6 Modules
 - Webpack
+- Jest
 - npm
 - Eslint
 - StyleLint
@@ -34,6 +35,9 @@
   - Run `npm run start` to open it on a live server. NB The port is set to 3000. Go the webpack.config file to change it 
 - Else
   - Just Go to the dist folder and open index.html
+## Testing
+- Go to the root directory
+- Open a CLI tool and type `npm run test`
 
 ## Author
 

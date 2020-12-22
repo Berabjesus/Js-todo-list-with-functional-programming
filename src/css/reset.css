@@ -3,7 +3,7 @@
 *::before,
 *::after {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
@@ -56,11 +56,10 @@ button:hover {
 
 img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .row {
   margin-left: 0;
   margin-right: 0;
 }
-/*# sourceMappingURL=reset.css.map */

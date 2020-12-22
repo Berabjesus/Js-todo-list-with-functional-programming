@@ -1,12 +1,6 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-    "font-family-no-missing-generic-family-keyword": [
-       true,
-       {
-         "ignoreFontFamilies": ["Eraser-Regular"]
-       }
-   ],
    "at-rule-no-unknown": null
  }
 }

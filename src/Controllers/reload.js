@@ -4,7 +4,7 @@ import it from '../helpers/main_module';
 import {
   getKeys, addTask as store, editTask as edit, deleteTask as remove,
 } from '../Models/local_storage';
-import { getCategories as categories, getUpcomingTasks as upcomingTasks } from './render_object';
+import { getCategories as categories, getUpcomingTasks as upcomingTasks } from '../helpers/render_object';
 
 export const isEmpty = target => target.length === 0 || !(target.toString()).trim();
 
