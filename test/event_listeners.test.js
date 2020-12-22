@@ -1,8 +1,9 @@
-/* eslint-disable import/no-unresolved */
+/* eslint-disable no-undef */
 
 import * as events from '../src/Controllers/event_listeners';
 
-const $ = require('jquery');
+// const $ = require('jquery');
+import '../jquery-global';
 
 beforeEach(() => {
   const categoryContainer = `<div id="categoryContainer" ><div ><button id="testbtn" type="button">Personal<span></span></button><div id="collapse-0"><div task-container"></div></div></div></div>
