@@ -1,5 +1,5 @@
-# Clock.me Todo list application
-> This is a javascript project made to create a todo list application by dynamically rendering it using JavaScript DOM manipulation and local storage. JavaScript is used to generate the entire contents of the website. A user can create, edit and delete tasks.
+# Clock.me Todo list application with TDD
+> This is a javascript project made to create a todo list application by dynamically rendering it using JavaScript DOM manipulation and local storage. JavaScript is used to generate the entire contents of the website. A user can create, edit and delete tasks. Jest is used to perform test driven development.
 
 ## Built With
 
@@ -8,6 +8,7 @@
 - CSS
 - ES6 Modules
 - Webpack
+- Jest
 - npm
 - Eslint
 - StyleLint
