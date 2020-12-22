@@ -1,6 +1,7 @@
-/* eslint-disable import/no-unresolved*/
+/* eslint-disable import/no-unresolved */
 
 import * as events from '../src/Controllers/event_listeners';
+
 const $ = require('jquery');
 
 beforeEach(() => {
