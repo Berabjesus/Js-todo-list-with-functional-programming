@@ -67,19 +67,23 @@ const addSelectUpdaterEvent = () => {
   button.addEventListener('click', updateSelect)
 };
 
+const upcomingEvent = () => {
+  reload.reloadMain(upcomingTasks());
+}
+
+const pastEvent = () => {
+  reload.reloadMain(pastTasks());
+}
+
 const addNavButtonEvents = () => {
   const upcoming = document.getElementById('upcomingTasks');
   const past = document.getElementById('pastTasks');
   upcoming.setAttribute('click-event', 'true');
   past.setAttribute('click-event', 'true');
-  upcoming.addEventListener('click', () => {
-    reload.reloadMain(upcomingTasks());
-  });
-  past.addEventListener('click', () => {
-    reload.reloadMain(pastTasks());
-  });
+  upcoming.addEventListener('click', upcomingEvent);
+  past.addEventListener('click', pastEvent);
 };
 
 export {
-  addEventToCategoryModal, addEventToNewTaskModal, addSelectUpdaterEvent, addNavButtonEvents, addCategory,addTask,updateSelect
+  addEventToCategoryModal, addEventToNewTaskModal, addSelectUpdaterEvent, addNavButtonEvents, addCategory,addTask,updateSelect, upcomingEvent, pastEvent
 };

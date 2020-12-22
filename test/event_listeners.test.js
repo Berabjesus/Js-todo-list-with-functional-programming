@@ -17,7 +17,12 @@ beforeEach(() => {
 `
   document.body.innerHTML += taskModal
 
-  const ids = ['addCategoryButton', 'newTaskButton', 'middleSectionAddButton'];
+  const taskSelector = `
+  <select name="categories" id="taskCategories" class="form-control"></select>`
+
+  document.body.innerHTML += taskSelector
+
+  const ids = ['addCategoryButton', 'newTaskButton', 'middleSectionAddButton', 'pastTasks','upcomingTasks'];
   ids.forEach(id => {
     const btn = document.createElement('button');
     btn.id = id;
@@ -83,5 +88,42 @@ describe('addSelectUpdaterEvent', () => {
     const button = document.getElementById('middleSectionAddButton')
     events.addSelectUpdaterEvent();
     expect(button.getAttribute('click-event')).toBe('true');
+  });
+
+  test('When clicked, it should populate the select element with id `taskCategories` with options', () => {
+    const updateSelect = jest.spyOn(events, 'updateSelect')
+    $('#middleSectionAddButton').click(updateSelect);  
+    $('#middleSectionAddButton').click();
+    const select = document.getElementById('taskCategories')
+    expect(select.firstChild.nodeName === 'OPTION').toBeTruthy();
+    expect(select.firstChild.innerText === 'Test task').toBeTruthy();
+  });
+});
+
+
+describe('addNavButtonEvents', () => {
+  it('should add a click event to a button with middleSectionAddButton Id', () => {
+    const button1 = document.getElementById('upcomingTasks')
+    const button2 = document.getElementById('pastTasks')
+    events.addNavButtonEvents();
+    expect(button1.getAttribute('click-event')).toBe('true');
+    expect(button2.getAttribute('click-event')).toBe('true');
+  });
+
+  test('when upcomingTasks button is clicked it should create a div inside the second section container', () => {
+    const upcoming = jest.spyOn(events, 'upcomingEvent')
+    $('#upcomingTasks').click(upcoming);  
+    $('#upcomingTasks').click();
+    const section = document.getElementById('secondSection')
+    expect(section.firstChild.nodeName === 'DIV').toBeTruthy();
+  });
+
+  
+  test('when pastTasks button is clicked it should create a div inside the second section container', () => {
+    const past = jest.spyOn(events, 'pastEvent')
+    $('#pastTasks').click(past);  
+    $('#pastTasks').click();
+    const section = document.getElementById('secondSection')
+    expect(section.firstChild.nodeName === 'DIV').toBeTruthy();
   });
 });
