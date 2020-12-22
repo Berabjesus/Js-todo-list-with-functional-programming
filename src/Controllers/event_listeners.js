@@ -14,18 +14,20 @@ const getValue = id => idSelector(id).value;
 const addEventToCategoryModal = () => {
   const addEventToCategoryButtonInModal = idSelector('addCategoryButton');
   addEventToCategoryButtonInModal.setAttribute('click-event', 'true');
-  addEventToCategoryButtonInModal.onclick = function () {
-    const value = getValue('newCategoryKey');
-    const notif = idSelector('newCategoryKeyNotif');
-    reload.isEmpty(value) ? (() => {
-      notif.innerText = 'Empty Key is not allowed';
-    })() : (() => {
-      setKey(value);
-      reload.reloadCategories(categories());
-      notif.innerText = `${value} is added to the categories`;
-    })();
-  };
+  addEventToCategoryButtonInModal.onclick = addCategory
 };
+
+const addCategory = () => {
+  const value = getValue('newCategoryKey');
+  const notif = idSelector('newCategoryKeyNotif');
+  reload.isEmpty(value) ? (() => {
+    notif.innerText = 'Empty Key is not allowed';
+  })() : (() => {
+    setKey(value);
+    reload.reloadCategories(categories());
+    notif.innerText = `${value} is added to the categories`;
+  })();
+}
 
 const addEventToNewTaskModal = () => {
   const addEventToNewTaskButton = idSelector('newTaskButton');
@@ -43,6 +45,10 @@ const addEventToNewTaskModal = () => {
     reload.sharedEvent(newtaskObject, 'newTaskNotif');
   };
 };
+
+const addTask= () => {
+
+}
 
 const addSelectUpdaterEvent = () => {
   const button = document.getElementById('middleSectionAddButton');
@@ -74,5 +80,5 @@ const addNavButtonEvents = () => {
 };
 
 export {
-  addEventToCategoryModal, addEventToNewTaskModal, addSelectUpdaterEvent, addNavButtonEvents,
+  addEventToCategoryModal, addEventToNewTaskModal, addSelectUpdaterEvent, addNavButtonEvents, addCategory,addTask
 };
