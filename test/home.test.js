@@ -1,5 +1,4 @@
 import home from '../src/Views/home';
-
 describe('firstSection function', () => {
   const firstSection = home.firstSection();
   it('Should return an HTML section tag with a class name of first-section', () => {
