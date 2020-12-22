@@ -1,5 +1,5 @@
 import {
-  getAllTasks, addTask, getKeys, setKey, getSortedTasksBydate, deleteTask,
+  getAllTasks, addTask, getKeys, setKey, getSortedTasksBydate, deleteTask, editTask
 } from '../src/Models/local_storage';
 
 const testKey = 'test with jest';
@@ -61,6 +61,15 @@ describe('local storage getAllTasks', () => {
 describe('local storage getSortedTasksBydate', () => {
   it('should return two objects named pastTasks and upcomingTasks', () => {
     expect(Object.keys(getSortedTasksBydate()).length === 2 && Object.keys(getSortedTasksBydate()).some(key => key === 'pastTasks' || key === 'upcomingTasks')).toBeTruthy();
+  });
+});
+
+describe('local storage editTask', () => {
+  it('should delete the task object from local storage', () => {
+    const newerTask = {...newtaskObject}
+    newerTask.title = 'edited task'
+    editTask(newtaskObject, newerTask);
+    expect(getAllTasks().some(obj => obj.data !== 'personal title')).toBeTruthy();
   });
 });
 
