@@ -1,5 +1,6 @@
 # Clock.me Todo list application with TDD and Functional Programming
 > This is a javascript project made to create a todo list application by dynamically rendering it using JavaScript DOM manipulation and local storage. JavaScript is used to generate the entire contents of the website. A user can create, edit and delete tasks. Jest is used to perform test driven development.
+
 > Core Principles of Functional Programming can be found [here](https://www.freecodecamp.org/news/an-introduction-to-the-basic-principles-of-functional-programming-a2c2a15c84/)
 ## Built With
 
