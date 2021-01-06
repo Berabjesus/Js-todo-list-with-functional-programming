@@ -7,9 +7,9 @@
 - JavaScript
 - HTML
 - CSS
+- Jest
 - ES6 Modules
 - Webpack
-- Jest
 - npm
 - Eslint
 - StyleLint
