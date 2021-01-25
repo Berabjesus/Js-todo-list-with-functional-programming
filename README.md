@@ -46,7 +46,7 @@
 
 - Github: [@Berabjesus](https://github.com/Berabjesus)
 - Twitter: [@bereket_ababu_b](https://twitter.com/bereket_ababu_b)
-- Linkedin: Linkedin: [linkedin](https://www.linkedin.com/in/bereket-beshane-a1b75a1a9/) 
+- Linkedin: Linkedin: [linkedin]https://www.linkedin.com/in/bereketbeshane) 
 
 ## 🤝 Contributing
 
